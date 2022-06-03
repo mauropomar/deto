@@ -1,47 +1,38 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+  <q-layout view="hHh lpR fFf">
+
+    <q-header elevated class="bg-primary text-white">
       <q-toolbar>
-        <q-btn
+        <q-toolbar-title>
+          <q-btn
           flat
           dense
           round
           icon="menu"
           aria-label="Menu"
-          @click="toggleLeftDrawer"
         />
-
-        <q-toolbar-title>
-          Quasar App
         </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
+      <q-btn flat round dense icon="record_voice_over" class="q-mr-xs" />
+      <q-btn flat round dense icon="mobile_friendly" class="q-mr-xs" />
+      <q-btn flat round dense icon="shopping_cart" class="q-mr-xs" />
+      <q-btn flat round dense icon="attach_money" class="q-mr-xs" />
+      <q-btn flat round dense icon="brightness_2" class="q-mr-xs" />
+      <q-btn flat round dense icon="language" class="q-mr-xs" />
       </q-toolbar>
     </q-header>
-
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-    >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
-
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer>
 
     <q-page-container>
       <router-view />
     </q-page-container>
+
+    <q-footer elevated class="bg-primary text-white">
+      <q-toolbar>
+        <q-toolbar-title>
+          <div></div>
+        </q-toolbar-title>
+      </q-toolbar>
+    </q-footer>
+
   </q-layout>
 </template>
 
