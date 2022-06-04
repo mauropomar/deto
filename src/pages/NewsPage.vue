@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-
+      Noticias
   </q-page>
 </template>
 

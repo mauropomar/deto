@@ -1,13 +1,11 @@
 <template>
-  <q-page class="flex flex-center">
-
-  </q-page>
+  <q-page class="flex flex-center"> Idiomas </q-page>
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'LanguagePage'
-})
+  name: "LanguagePage",
+});
 </script>
