@@ -7,10 +7,8 @@ const routes = [
       { path: '', component: () => import('pages/IndexPage.vue') },
       { path: 'advertisements', component: () => import('pages/AdvertisementPage.vue') },
       { path: 'combos', component: () => import('pages/ComboPage.vue') },
-      { path: 'languages', component: () => import('pages/LanguagePage.vue') },
       { path: 'rechages', component: () => import('pages/RechargePage.vue') },
       { path: 'news', component: () => import('pages/NewsPage.vue') },
-      { path: 'themes', component: () => import('pages/ThemePage.vue') },
       { path: 'shipments', component: () => import('pages/ShipmentPage.vue') }
     ]
   },
