@@ -32,7 +32,7 @@
           <q-btn class="q-mr-lg" flat round dense icon="phone"/>
           <q-separator vertical="false" color="accent"/>
           <div class="q-mr-sm">Deto</div>
-          <div>{{getFullYear()}} @ Todos los derechos estan reservados</div>
+          <div>|{{getFullYear()}} @ Todos los derechos estan reservados</div>
       </q-toolbar>
     </q-footer>
 
