@@ -5,7 +5,7 @@
         <q-toolbar-title>
           <q-btn flat dense round icon="menu" aria-label="Menu" />
         </q-toolbar-title>
-        <q-btn @click="goToPage('advertisements')" flat round dense  icon="record_voice_over" class="q-mr-xs">
+        <q-btn @click="goToPage('advertisements')" flat round dense  icon="ti-volume" class="q-mr-xs">
             <q-tooltip class="bg-primary">
               Anuncios
             </q-tooltip>
@@ -44,9 +44,10 @@
 
     <q-footer elevated class="bg-primary text-white">
       <q-toolbar>
-        <q-btn flat round dense icon="compare_arrows">
+        <q-btn flat round dense>
+          <q-icon name="ti-exchange-vertical" size="15px"></q-icon>
           <q-tooltip class="bg-primary">
-              Dezplazar
+              Desplazar
            </q-tooltip>
         </q-btn>
         <q-space />
