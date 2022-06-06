@@ -1,6 +1,10 @@
 <template>
-  <q-page class="flex flex-center">
-    Anuncios
+  <q-page>
+    <div class="btn-visit">
+     <q-btn color="primary" label="Visitar" @click="visitPage()">
+         <q-icon class="q-pl-sm" name="keyboard_arrow_right" size="10px" />
+     </q-btn>
+    </div>
   </q-page>
 </template>
 
@@ -8,6 +12,19 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'AdvertisementPage'
+  name: 'AdvertisementPage',
+  methods:{
+    visitPage(){
+      window.open("https://anuncios.detooo.com/login");
+    }
+  }
 })
 </script>
+
+<style>
+  .btn-visit{
+    position: absolute;
+    bottom: 240px;
+    left: 250px;
+  }
+</style>

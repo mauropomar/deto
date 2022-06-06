@@ -58,7 +58,7 @@
         </q-btn>
         <q-separator vertical="false" color="accent" />
         <div class="q-mr-sm">Deto</div>
-        <div>{{ getFullYear() }} @ Todos los derechos estan reservados</div>
+        <div class="q-mr-sm">{{ getFullYear() }} @ Todos los derechos estan reservados</div>
       </q-toolbar>
     </q-footer>
   </q-layout>
