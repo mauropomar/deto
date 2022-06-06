@@ -3,7 +3,7 @@
     <q-header elevated class="bg-primary text-white">
       <q-toolbar>
         <q-toolbar-title>
-          <q-btn flat dense round icon="menu" aria-label="Menu" />
+          <q-btn @click="goToPage('menu')" flat dense round icon="menu" aria-label="Menu" />
         </q-toolbar-title>
         <q-btn @click="goToPage('advertisements')" flat round dense  icon="ti-volume" class="q-mr-xs">
             <q-tooltip class="bg-primary">
