@@ -5,35 +5,40 @@
         <q-toolbar-title>
           <q-btn @click="goToPage('menu')" flat dense round icon="menu" aria-label="Menu" />
         </q-toolbar-title>
-        <q-btn @click="goToPage('advertisements')" flat round dense  icon="ti-volume" class="q-mr-xs">
+        <q-btn v-if="visible" @click="goToPage('advertisements')"  flat round dense  icon="ti-volume" class="q-mr-xs">
             <q-tooltip class="bg-primary">
               Anuncios
             </q-tooltip>
         </q-btn>
-        <q-btn @click="goToPage('rechages')" flat round dense icon="mobile_friendly" class="q-mr-xs">
+        <q-btn v-if="visible" @click="goToPage('rechages')" flat round dense icon="mobile_friendly" class="q-mr-xs">
            <q-tooltip class="bg-primary">
                  Recargas
            </q-tooltip>
         </q-btn>
-        <q-btn @click="goToPage('combos')" flat round dense icon="shopping_cart" class="q-mr-xs">
+        <q-btn v-if="visible" @click="goToPage('combos')" flat round dense icon="shopping_cart" class="q-mr-xs">
             <q-tooltip class="bg-primary">
                  Combos
            </q-tooltip>
         </q-btn>
-        <q-btn @click="goToPage('shipments')" flat round dense icon="attach_money" class="q-mr-xs">
+        <q-btn v-if="visible" @click="goToPage('shipments')" flat round dense icon="attach_money" class="q-mr-xs">
             <q-tooltip class="bg-primary">
               Envios
            </q-tooltip>
         </q-btn>
-        <q-btn @click="changeTheme()"  round dense icon="brightness_2" class="q-mr-xs">
+        <q-btn v-if="visible" @click="changeTheme()"  round dense icon="brightness_2" class="q-mr-xs">
             <q-tooltip class="bg-primary">
               Temas
            </q-tooltip>
         </q-btn>
-        <q-btn @click="changeLanguage()" flat round dense icon="language" class="q-mr-xs">
+        <q-btn v-if="visible" @click="changeLanguage()" flat round dense icon="language" class="q-mr-xs">
             <q-tooltip class="bg-primary">
               Lenguajes
            </q-tooltip>
+        </q-btn>
+        <q-btn v-if="!visible" @click="goToHome()" flat round dense icon="close" size="10px">
+            <q-tooltip class="bg-primary">
+              Cerrar
+        </q-tooltip>
         </q-btn>
       </q-toolbar>
     </q-header>
@@ -65,7 +70,7 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "MainLayout",
@@ -74,9 +79,16 @@ export default defineComponent({
     getFullYear() {
       return new Date().getFullYear();
     },
+    goToHome(){
+       this.$router.push('/');
+        this.$store.dispatch('toolbar/setVisible',{visible:true});
+    },
     goToPage(route) {
       const routeLink = `/${route}`;
       this.$router.push(routeLink);
+      if(route === 'menu'){
+        this.$store.dispatch('toolbar/setVisible',{visible:false});
+      }
     },
     changeTheme(){
 
@@ -85,5 +97,15 @@ export default defineComponent({
 
     }
   },
+  computed:{
+     visible: {
+      get () {
+        return this.$store.state.toolbar.visible;
+      },
+      set (value) {
+        this.setVisible({ visible: value });
+      }
+    },
+  }
 });
 </script>
