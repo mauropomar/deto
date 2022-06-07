@@ -1,23 +1,33 @@
 const state = {
-    visible: true
+  visibleOptionHeader: true,
+  visibleOptionBack: false
 }
 
 const mutations = {
-  SET_VISIBLE(state, { visible }) {
-    state.visible = visible;
+  SET_VISIBLE_OPTION_HEADER(state, { visible }) {
+    state.visibleOptionHeader = visible;
+  },
+  SET_VISIBLE_OPTION_BACK(state, { visible }) {
+    state.visibleOptionBack = visible;
   },
 }
 
 const actions = {
-  setVisible({ commit }, { visible }) {
-    commit('SET_VISIBLE', { visible: visible });
+  setVisibleOptionHeader({ commit }, { visible }) {
+    commit('SET_VISIBLE_OPTION_HEADER', { visible: visible });
+  },
+  setVisibleOptionBack({ commit }, { visible }) {
+    commit('SET_VISIBLE_OPTION_BACK', { visible: visible });
   },
 };
 
 const getters = {
-   visible: (state) =>{
-     return state.visible;
-   }
+  visibleOptionHeader: (state) => {
+    return state.visibleOptionHeader;
+  },
+  visibleOptionBack: (state) => {
+    return state.visibleOptionBack;
+  }
 }
 
 
