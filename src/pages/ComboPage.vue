@@ -1,7 +1,7 @@
 <template>
   <q-page>
     <div class="btn-visit">
-     <q-btn color="primary" label="Comprar" @click="visitPage()">
+     <q-btn color="primary" :label="$t('combo.buttons.buy.text')" @click="visitPage()">
          <q-icon class="q-pl-sm" name="keyboard_arrow_right" size="10px" />
      </q-btn>
     </div>

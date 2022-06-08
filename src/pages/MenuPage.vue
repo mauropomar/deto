@@ -6,8 +6,8 @@
           @click="goToPage('advertisements')"
           color="primary"
           icon="ti-volume"
-          label="ANUNCIOS"
           size="20px"
+          :label="$t('header.buttons.advertisement.text')"
           style="width: 50%"
         />
       </div>
@@ -16,8 +16,8 @@
           @click="goToPage('rechages')"
           color="primary"
           icon="mobile_friendly"
-          label="RECARGAS"
           size="20px"
+          :label="$t('header.buttons.recharge.text')"
           style="width: 50%"
         />
       </div>
@@ -26,8 +26,8 @@
           @click="goToPage('combos')"
           color="primary"
           icon="shopping_cart"
-          label="COMBOS"
           size="20px"
+          :label="$t('header.buttons.combo.text')"
           style="width: 50%"
         />
       </div>
@@ -36,8 +36,8 @@
           @click="goToPage('shipments')"
           color="primary"
           icon="attach_money"
-          label="ENVIOS"
           size="20px"
+          :label="$t('header.buttons.shipment.text')"
           style="width: 50%"
         />
       </div>
@@ -46,8 +46,8 @@
           @click="goToPage('news')"
           color="primary"
           icon="description"
-          label="NOTICIAS"
           size="20px"
+          :label="$t('header.buttons.news.text')"
           style="width: 50%"
         />
       </div>
@@ -55,8 +55,8 @@
         <q-btn
           color="primary"
           icon="brightness_2"
-          label="TEMAS"
           size="20px"
+          :label="$t('header.buttons.theme.text')"
           style="width: 50%"
         />
       </div>
@@ -64,9 +64,10 @@
         <q-btn
           color="primary"
           icon="language"
-          label="IDIOMA"
           size="20px"
+          :label="$t('header.buttons.language.text')"
           style="width: 50%"
+          @click="changeLanguage()"
         />
       </div>
     </div>
@@ -85,6 +86,12 @@ export default defineComponent({
       this.$store.dispatch("toolbar/setVisibleOptionHeader", { visible: true });
       this.$store.dispatch("toolbar/setVisibleOptionBack", { visible: true });
     },
+    changeLanguage() {
+      this.$i18n.locale = this.$i18n.locale === "es" ? "en-US" : "es";
+    },
+  },
+  mounted() {
+    this.$store.dispatch("toolbar/setVisibleOptionHeader", { visible: false });
   },
 });
 </script>

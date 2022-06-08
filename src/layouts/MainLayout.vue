@@ -21,7 +21,9 @@
           icon="ti-volume"
           class="q-mr-xs"
         >
-          <q-tooltip class="bg-primary"> Anuncios </q-tooltip>
+          <q-tooltip class="bg-primary">
+            {{ $t("header.buttons.advertisement.text") }}
+          </q-tooltip>
         </q-btn>
         <q-btn
           v-if="visibleOptionHeader"
@@ -32,7 +34,9 @@
           icon="mobile_friendly"
           class="q-mr-xs"
         >
-          <q-tooltip class="bg-primary"> Recargas </q-tooltip>
+          <q-tooltip class="bg-primary">
+            {{ $t("header.buttons.recharge.text") }}
+          </q-tooltip>
         </q-btn>
         <q-btn
           v-if="visibleOptionHeader"
@@ -43,7 +47,9 @@
           icon="shopping_cart"
           class="q-mr-xs"
         >
-          <q-tooltip class="bg-primary"> Combos </q-tooltip>
+          <q-tooltip class="bg-primary">
+            {{ $t("header.buttons.combo.text") }}
+          </q-tooltip>
         </q-btn>
         <q-btn
           v-if="visibleOptionHeader"
@@ -54,7 +60,9 @@
           icon="attach_money"
           class="q-mr-xs"
         >
-          <q-tooltip class="bg-primary"> Envios </q-tooltip>
+          <q-tooltip class="bg-primary">
+            {{ $t("header.buttons.shipment.text") }}
+          </q-tooltip>
         </q-btn>
         <q-btn
           v-if="visibleOptionHeader"
@@ -64,7 +72,9 @@
           icon="brightness_2"
           class="q-mr-xs"
         >
-          <q-tooltip class="bg-primary"> Temas </q-tooltip>
+          <q-tooltip class="bg-primary">
+            {{ $t("header.buttons.theme.text") }}
+          </q-tooltip>
         </q-btn>
         <q-btn
           v-if="visibleOptionHeader"
@@ -75,7 +85,9 @@
           icon="language"
           class="q-mr-xs"
         >
-          <q-tooltip class="bg-primary"> Lenguajes </q-tooltip>
+          <q-tooltip class="bg-primary">
+            {{ $t("header.buttons.language.text") }}
+          </q-tooltip>
         </q-btn>
         <q-btn
           v-if="!visibleOptionHeader"
@@ -86,7 +98,9 @@
           icon="close"
           size="10px"
         >
-          <q-tooltip class="bg-primary"> Cerrar </q-tooltip>
+          <q-tooltip class="bg-primary">
+            {{ $t("header.buttons.close.text") }}
+          </q-tooltip>
         </q-btn>
       </q-toolbar>
     </q-header>
@@ -99,7 +113,9 @@
       <q-toolbar>
         <q-btn flat round dense v-if="!visibleOptionBack">
           <q-icon name="ti-exchange-vertical" size="15px"></q-icon>
-          <q-tooltip class="bg-primary"> Desplazar </q-tooltip>
+          <q-tooltip class="bg-primary">
+            {{ $t("footer.buttons.displace.text") }}
+          </q-tooltip>
         </q-btn>
         <q-btn
           flat
@@ -109,7 +125,9 @@
           @click="goToPageBack()"
         >
           <q-icon name="ti-arrow-left" size="15px"></q-icon>
-          <q-tooltip class="bg-primary"> ATRAS </q-tooltip>
+          <q-tooltip class="bg-primary">
+            {{ $t("footer.buttons.back.text") }}
+          </q-tooltip>
         </q-btn>
         <q-space />
         <q-btn class="q-mr-lg" flat round dense icon="phone">
@@ -118,7 +136,7 @@
         <q-separator vertical="false" color="accent" />
         <div class="q-mr-sm">Deto</div>
         <div class="q-mr-sm">
-          {{ getFullYear() }} @ Todos los derechos estan reservados
+          {{ getFullYear() }} @ {{ $t("footer.copyright") }}
         </div>
       </q-toolbar>
     </q-footer>
@@ -127,10 +145,16 @@
 
 <script>
 import { defineComponent } from "vue";
+import { useQuasar } from "quasar";
 
 export default defineComponent({
   name: "MainLayout",
   components: {},
+  data() {
+    return {
+      content: this.$t("mykey3"),
+    };
+  },
   methods: {
     getFullYear() {
       return new Date().getFullYear();
@@ -142,20 +166,19 @@ export default defineComponent({
     goToPage(route) {
       const routeLink = `/${route}`;
       this.$router.push(routeLink);
-      if (route === "menu") {
-        this.$store.dispatch("toolbar/setVisibleOptionHeader", {
-          visible: false,
-        });
-      }
       this.$store.dispatch("toolbar/setVisibleOptionBack", { visible: false });
     },
     goToPageBack() {
       this.$router.go(-1);
-      this.$store.dispatch("toolbar/setVisibleOptionHeader", { visible: false });
-      this.$store.dispatch("toolbar/setVisibleOptionBack", {visible: false });
+      this.$store.dispatch("toolbar/setVisibleOptionHeader", {
+        visible: false,
+      });
+      this.$store.dispatch("toolbar/setVisibleOptionBack", { visible: false });
     },
     changeTheme() {},
-    changeLanguage() {},
+    changeLanguage() {
+      this.$i18n.locale = this.$i18n.locale === "es" ? "en-US" : "es";
+    },
   },
   computed: {
     visibleOptionHeader: {
