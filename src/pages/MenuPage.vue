@@ -8,7 +8,7 @@
           icon="ti-volume"
           size="20px"
           :label="$t('header.buttons.advertisement.text')"
-          style="width: 50%"
+          style="width: 25%"
         />
       </div>
       <div class="col-12">
@@ -18,7 +18,7 @@
           icon="mobile_friendly"
           size="20px"
           :label="$t('header.buttons.recharge.text')"
-          style="width: 50%"
+          style="width: 25%"
         />
       </div>
       <div class="col-12">
@@ -28,7 +28,7 @@
           icon="shopping_cart"
           size="20px"
           :label="$t('header.buttons.combo.text')"
-          style="width: 50%"
+          style="width: 25%"
         />
       </div>
       <div class="col-12">
@@ -38,7 +38,7 @@
           icon="attach_money"
           size="20px"
           :label="$t('header.buttons.shipment.text')"
-          style="width: 50%"
+          style="width: 25%"
         />
       </div>
       <div class="col-12">
@@ -48,7 +48,7 @@
           icon="description"
           size="20px"
           :label="$t('header.buttons.news.text')"
-          style="width: 50%"
+          style="width: 25%"
         />
       </div>
       <div class="col-12">
@@ -57,7 +57,7 @@
           icon="brightness_2"
           size="20px"
           :label="$t('header.buttons.theme.text')"
-          style="width: 50%"
+          style="width: 25%"
         />
       </div>
       <div class="col-12">
@@ -66,7 +66,7 @@
           icon="language"
           size="20px"
           :label="$t('header.buttons.language.text')"
-          style="width: 50%"
+          style="width: 25%"
           @click="changeLanguage()"
         />
       </div>

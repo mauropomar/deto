@@ -1,0 +1,44 @@
+@use "sass:map";
+
+$themes: (
+    'blue':(
+    primary   : #0956A8,
+    secondary : #26A69A,
+    accent    : #9C27B0,
+    dark      : #1D1D1D,
+    positive  : #21BA45,
+    negative  : #C10015,
+    info      : #31CCEC,
+    warning   : #F2C037,
+    marginal-bg:#FFF,
+    marginal-text:#413d45,
+    marginal-btn:#413D45,
+    marginal-btn-active:#FFC800
+   ),
+   'blue-dark':(
+    primary   : #0909a8,
+    secondary : #26A69A,
+    accent    : #9C27B0,
+    dark      : #1D1D1D,
+    positive  : #21BA45,
+    negative  : #C10015,
+    info      : #31CCEC,
+    warning   : #F2C037,
+    marginal-text:#413d45,
+    marginal-btn:#413D45,
+    marginal-btn-active:#FFC800
+   ),
+);
+
+@each $theme, $colors in $themes{
+  [data-theme="#{$theme}"]{
+    @each $name, $color in $colors {
+      .bg-#{$name} {
+        background: $color !important
+      }
+      .text-#{$name} {
+        color: $color !important
+      }
+    }
+  }
+}

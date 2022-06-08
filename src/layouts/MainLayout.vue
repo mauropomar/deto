@@ -175,7 +175,11 @@ export default defineComponent({
       });
       this.$store.dispatch("toolbar/setVisibleOptionBack", { visible: false });
     },
-    changeTheme() {},
+    changeTheme() {
+      let themeLocale = document.body.getAttribute('data-theme');
+      themeLocale = themeLocale === null | themeLocale === 'blue'? 'blue-dark': 'blue';
+      document.body.setAttribute('data-theme', themeLocale);
+    },
     changeLanguage() {
       this.$i18n.locale = this.$i18n.locale === "es" ? "en-US" : "es";
     },
