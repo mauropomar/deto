@@ -69,7 +69,7 @@
           @click="changeTheme()"
           round
           dense
-          icon="wb_sunny"
+          :icon="iconTheme"
           class="q-mr-xs"
         >
           <q-tooltip class="bg-primary">
@@ -145,14 +145,13 @@
 
 <script>
 import { defineComponent } from "vue";
-import { useQuasar } from "quasar";
 
 export default defineComponent({
   name: "MainLayout",
   components: {},
   data() {
     return {
-      content: this.$t("mykey3"),
+     iconTheme: 'wb_sunny',
     };
   },
   methods: {
@@ -178,14 +177,16 @@ export default defineComponent({
     changeTheme() {
       let themeLocale = document.body.getAttribute("data-theme");
       themeLocale =
-        (themeLocale === null) | (themeLocale === "blue")
+        (themeLocale === null) || (themeLocale === "blue")
           ? "blue-dark"
           : "blue";
       document.body.setAttribute("data-theme", themeLocale);
+      this.iconTheme = themeLocale === 'blue' ?  "brightness_2" : "wb_sunny";
+      localStorage.setItem('theme', themeLocale);
     },
     changeLanguage() {
       this.$i18n.locale = this.$i18n.locale === "es" ? "en-US" : "es";
-    },
+    }
   },
   computed: {
     visibleOptionHeader: {
@@ -203,7 +204,13 @@ export default defineComponent({
       set(value) {
         this.setVisibleOptionBack({ visible: value });
       },
-    },
+    }
   },
+  mounted(){
+    let themeLocale = localStorage.getItem('theme');
+    this.iconTheme = (themeLocale === null) || (themeLocale === "blue")? "brightness_2" : "wb_sunny";
+    themeLocale = (themeLocale === null) | (themeLocale === "blue") ? "blue" : "blue-dark";
+    document.body.setAttribute("data-theme", themeLocale);
+  }
 });
 </script>

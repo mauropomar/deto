@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex flex-center" style="background-color:#008DD2">
+  <q-page class="flex flex-center" style="background-color: #008dd2">
     <div id="card-content" class="row">
       <div class="col-12">
         <q-btn
@@ -61,7 +61,7 @@
           flat
           color="primary"
           text-color="primary"
-          icon="wb_sunny"
+          :icon="iconTheme"
           size="20px"
           :label="$t('header.buttons.theme.text')"
           @click="changeTheme()"
@@ -88,6 +88,11 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "MenuPage",
+  data() {
+    return {
+     iconTheme: 'wb_sunny',
+    };
+  },
   methods: {
     goToPage(route) {
       const routeLink = `/${route}`;
@@ -99,13 +104,20 @@ export default defineComponent({
       this.$i18n.locale = this.$i18n.locale === "es" ? "en-US" : "es";
     },
     changeTheme() {
-      let themeLocale = document.body.getAttribute('data-theme');
-      themeLocale = themeLocale === null | themeLocale === 'blue'? 'blue-dark': 'blue';
-      document.body.setAttribute('data-theme', themeLocale);
+      let themeLocale = document.body.getAttribute("data-theme");
+      themeLocale =
+        (themeLocale === null) | (themeLocale === "blue")
+          ? "blue-dark"
+          : "blue";
+      document.body.setAttribute("data-theme", themeLocale);
+      localStorage.setItem('theme', themeLocale);
+      this.iconTheme = themeLocale === 'blue' ?  "brightness_2" : "wb_sunny";
     },
   },
   mounted() {
     this.$store.dispatch("toolbar/setVisibleOptionHeader", { visible: false });
+     let themeLocale = localStorage.getItem('theme');
+    this.iconTheme = (themeLocale === null) || (themeLocale === "blue")? "brightness_2" : "wb_sunny";
   },
 });
 </script>
