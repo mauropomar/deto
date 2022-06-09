@@ -1,43 +1,56 @@
 @use "sass:map";
 
 $themes: (
-    'blue':(
-    primary   : #0956A8,
-    secondary : #26A69A,
-    accent    : #9C27B0,
-    dark      : #1D1D1D,
-    positive  : #21BA45,
-    negative  : #C10015,
-    info      : #31CCEC,
-    warning   : #F2C037,
-    marginal-bg:#FFF,
-    marginal-text:#413d45,
-    marginal-btn:#413D45,
-    marginal-btn-active:#FFC800
-   ),
-   'blue-dark':(
-    primary   : #0909a8,
-    secondary : #26A69A,
-    accent    : #9C27B0,
-    dark      : #1D1D1D,
-    positive  : #21BA45,
-    negative  : #C10015,
-    info      : #31CCEC,
-    warning   : #F2C037,
-    marginal-text:#413d45,
-    marginal-btn:#413D45,
-    marginal-btn-active:#FFC800
-   ),
+  "blue": (
+    primary: #0956a8,
+    secondary: #26a69a,
+    accent: #9c27b0,
+    dark: #1d1d1d,
+    default: #fff,
+    positive: #21ba45,
+    negative: #c10015,
+    info: #31ccec,
+    warning: #f2c037,
+    marginal-bg: #fff,
+    marginal-text: #413d45,
+    marginal-btn: #413d45,
+    marginal-btn-active: #ffc800,
+  ),
+  "blue-dark": (
+    primary: #0956a8,
+    secondary: #26a69a,
+    accent: #9c27b0,
+    dark: #1d1d1d,
+    default: #1d1d1d,
+    positive: #21ba45,
+    negative: #c10015,
+    info: #31ccec,
+    warning: #f2c037,
+    marginal-text: #413d45,
+    marginal-btn: #413d45,
+    marginal-btn-active: #ffc800,
+  ),
 );
 
-@each $theme, $colors in $themes{
-  [data-theme="#{$theme}"]{
+@each $theme, $colors in $themes {
+  [data-theme="#{$theme}"] {
     @each $name, $color in $colors {
       .bg-#{$name} {
-        background: $color !important
+        background: $color !important;
       }
       .text-#{$name} {
-        color: $color !important
+        color: $color !important;
+      }
+      @if $name == 'default' {
+        .q-btn {
+          color: $color !important;
+        }
+        .q-text {
+          color: $color !important;
+        }
+        div {
+          color: $color !important;
+        }
       }
     }
   }

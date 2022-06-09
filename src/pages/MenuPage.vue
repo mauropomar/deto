@@ -1,72 +1,81 @@
 <template>
-  <q-page class="flex flex-center">
+  <q-page class="flex flex-center" style="background-color:#008DD2">
     <div id="card-content" class="row">
       <div class="col-12">
         <q-btn
           @click="goToPage('advertisements')"
+          flat
           color="primary"
+          text-color="primary"
           icon="ti-volume"
           size="20px"
           :label="$t('header.buttons.advertisement.text')"
-          style="width: 25%"
         />
       </div>
       <div class="col-12">
         <q-btn
           @click="goToPage('rechages')"
+          flat
           color="primary"
+          text-color="primary"
           icon="mobile_friendly"
           size="20px"
           :label="$t('header.buttons.recharge.text')"
-          style="width: 25%"
         />
       </div>
       <div class="col-12">
         <q-btn
           @click="goToPage('combos')"
+          flat
           color="primary"
+          text-color="primary"
           icon="shopping_cart"
           size="20px"
           :label="$t('header.buttons.combo.text')"
-          style="width: 25%"
         />
       </div>
       <div class="col-12">
         <q-btn
           @click="goToPage('shipments')"
+          flat
           color="primary"
+          text-color="primary"
           icon="attach_money"
           size="20px"
           :label="$t('header.buttons.shipment.text')"
-          style="width: 25%"
         />
       </div>
       <div class="col-12">
         <q-btn
           @click="goToPage('news')"
+          flat
           color="primary"
+          text-color="primary"
           icon="description"
           size="20px"
           :label="$t('header.buttons.news.text')"
-          style="width: 25%"
         />
       </div>
       <div class="col-12">
         <q-btn
+          flat
           color="primary"
-          icon="brightness_2"
+          text-color="primary"
+          icon="wb_sunny"
           size="20px"
           :label="$t('header.buttons.theme.text')"
-          style="width: 25%"
+          @click="changeTheme()"
         />
       </div>
       <div class="col-12">
         <q-btn
+          flat
           color="primary"
+          text-color="primary"
           icon="language"
           size="20px"
           :label="$t('header.buttons.language.text')"
-          style="width: 25%"
+          style="width: 90%"
           @click="changeLanguage()"
         />
       </div>
@@ -88,6 +97,11 @@ export default defineComponent({
     },
     changeLanguage() {
       this.$i18n.locale = this.$i18n.locale === "es" ? "en-US" : "es";
+    },
+    changeTheme() {
+      let themeLocale = document.body.getAttribute('data-theme');
+      themeLocale = themeLocale === null | themeLocale === 'blue'? 'blue-dark': 'blue';
+      document.body.setAttribute('data-theme', themeLocale);
     },
   },
   mounted() {

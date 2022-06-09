@@ -69,7 +69,7 @@
           @click="changeTheme()"
           round
           dense
-          icon="brightness_2"
+          icon="wb_sunny"
           class="q-mr-xs"
         >
           <q-tooltip class="bg-primary">
@@ -135,7 +135,7 @@
         </q-btn>
         <q-separator vertical="false" color="accent" />
         <div class="q-mr-sm">Deto</div>
-        <div class="q-mr-sm">
+        <div class="q-mr-sm" style="font-size: 10px">
           {{ getFullYear() }} @ {{ $t("footer.copyright") }}
         </div>
       </q-toolbar>
@@ -176,9 +176,12 @@ export default defineComponent({
       this.$store.dispatch("toolbar/setVisibleOptionBack", { visible: false });
     },
     changeTheme() {
-      let themeLocale = document.body.getAttribute('data-theme');
-      themeLocale = themeLocale === null | themeLocale === 'blue'? 'blue-dark': 'blue';
-      document.body.setAttribute('data-theme', themeLocale);
+      let themeLocale = document.body.getAttribute("data-theme");
+      themeLocale =
+        (themeLocale === null) | (themeLocale === "blue")
+          ? "blue-dark"
+          : "blue";
+      document.body.setAttribute("data-theme", themeLocale);
     },
     changeLanguage() {
       this.$i18n.locale = this.$i18n.locale === "es" ? "en-US" : "es";
