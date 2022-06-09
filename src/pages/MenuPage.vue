@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex flex-center" style="background-color: #008dd2">
+  <q-page class="flex flex-center bg-backgroud">
     <div id="card-content" class="row">
       <div class="col-12">
         <q-btn
@@ -128,5 +128,8 @@ export default defineComponent({
 }
 #card-content > div {
   margin-bottom: 10px;
+}
+.bg-backgroud{
+  background: linear-gradient(90deg, #008DD2 0%, #0956A8 100%)
 }
 </style>
