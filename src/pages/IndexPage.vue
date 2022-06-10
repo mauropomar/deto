@@ -4,13 +4,14 @@
       <div class="col-12 col-sm-5 flex flex-center">
         <div class="row q-pa-md">
           <div class="col-12 text-center section-title">
-            TODO LO QUE <br />NECESITAS
+            {{$t('indexPage.needs.text')}} <br />{{$t('indexPage.needs.lastText')}}
           </div>
           <div class="col-12 text-center q-mt-md">
-            Somos una plataforma multiservicio para Cuba
+            {{$t('indexPage.aboutUs.text')}}
           </div>
           <div class="col-12 text-center q-mt-md">
             <q-btn
+              @click="goToPage('news')"
               color="primary"
               text-color="primary"
               icon="mobile_friendly"
@@ -33,6 +34,12 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "IndexPage",
+  methods: {
+    goToPage(route) {
+      const routeLink = `/${route}`;
+      this.$router.push(routeLink);
+    },
+  }
 });
 </script>
 

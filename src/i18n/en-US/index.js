@@ -69,5 +69,14 @@ export default {
       },
     },
   },
+  indexPage:{
+    aboutUs:{
+     text : "We are a multiservice platform for Cuba"
+    },
+    needs:{
+      text : "EVERYTHING YOU",
+      lastText:"NEED"
+     },
+  }
 }
 

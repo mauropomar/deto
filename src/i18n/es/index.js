@@ -69,4 +69,13 @@ export default {
       },
     },
   },
+  indexPage:{
+    aboutUs:{
+     text : "Somos una plataforma multiservicio para Cuba"
+    },
+    needs:{
+      text : "TODO LO QUE",
+      lastText:"NECESITAS"
+     },
+  }
 };
