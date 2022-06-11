@@ -42,6 +42,8 @@ export default {
     copyright: 'All rights reserved'
   },
   advertisement: {
+    title:"ADVERTISEMENTS",
+    text:'Promotional Ads Platform for Cuba',
     buttons: {
       visit: {
         text: "Visit",
@@ -49,6 +51,8 @@ export default {
     },
   },
   recharge: {
+    title:"RECHARGES",
+    text:'Online cell phone recharge store for Cuba',
     buttons: {
       buy: {
         text: "Buy",
@@ -56,6 +60,8 @@ export default {
     },
   },
   combo: {
+    title:"COMBOS",
+    text:'Online Store of Products and Combos for Cuba',
     buttons: {
       buy: {
         text: "Buy",

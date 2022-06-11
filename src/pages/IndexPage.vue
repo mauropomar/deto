@@ -1,5 +1,5 @@
 <template>
-  <q-page class="bg-backgroud">
+  <q-page class="bg-page">
     <div id="section" class="row">
       <div class="col-12 col-sm-5 flex flex-center">
         <div class="row q-pa-md">
@@ -49,7 +49,8 @@ export default defineComponent({
   position: relative;
   background-image: url("./../assets/images/Bg_1.png");
   height: 85vh;
-}c
+}
+
 .section-rt {
   height: 100%;
   z-index: 9;
@@ -66,7 +67,7 @@ img {
   font-size: 25px;
 }
 
-.bg-backgroud {
+.bg-page {
   background: linear-gradient(90deg, #008dd2 0%, #0956a8 100%);
 }
 </style>

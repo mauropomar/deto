@@ -42,6 +42,8 @@ export default {
     copyright: "Todos los derechos están reservados",
   },
   advertisement: {
+    title:"ANUNCIOS",
+    text:'Plataforma de Anuncios promocionales para Cuba',
     buttons: {
       visit: {
         text: "Visitar",
@@ -49,6 +51,8 @@ export default {
     },
   },
   recharge: {
+    title:"RECARGAS",
+    text:'Tienda en línea de Recargas de Celulares para Cuba',
     buttons: {
       buy: {
         text: "Comprar",
@@ -56,6 +60,8 @@ export default {
     },
   },
   combo: {
+    title:"COMBOS",
+    text:'Tienda en línea de Productos y Combos para Cuba',
     buttons: {
       buy: {
         text: "Comprar",
