@@ -49,7 +49,7 @@ export default defineComponent({
   position: relative;
   background-image: url("./../assets/images/Bg_1.png");
   height: 85vh;
-}
+}c
 .section-rt {
   height: 100%;
   z-index: 9;

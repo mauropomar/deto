@@ -63,6 +63,8 @@ export default {
     },
   },
   shipment: {
+    title:"ENVIOS",
+    text:'Sucursal de Envío de Dinero en efectivo para Cuba',
     buttons: {
       call: {
         text: "Llamar",

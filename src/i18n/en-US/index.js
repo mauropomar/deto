@@ -63,6 +63,8 @@ export default {
     },
   },
   shipment: {
+    title:"SHIPMENTS",
+    text:'Cash Transfer Branch for Cuba',
     buttons: {
       call: {
         text: "Call",
