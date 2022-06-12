@@ -21,7 +21,7 @@
           </q-tooltip>
         </q-btn>
         <q-space />
-        <q-btn class="q-mr-lg" flat round dense icon="phone">
+        <q-btn class="q-mr-lg" flat round dense icon="phone" @click="callNumber()">
           <q-tooltip class="bg-primary"> +1(786) 203 7678 </q-tooltip>
         </q-btn>
         <q-separator vertical="false" color="accent" />
@@ -49,6 +49,9 @@ export default defineComponent({
       });
       this.$store.dispatch("toolbar/setVisibleOptionBack", { visible: false });
     },
+    callNumber(){
+       window.open('tel:1(786) 203 7678');
+    }
   },
   computed: {
     visibleOptionBack: {
