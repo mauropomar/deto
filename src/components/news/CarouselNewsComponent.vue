@@ -16,23 +16,29 @@
       <div class="carousel-slide-image">
         <img src="./../../assets/images/Promo_1.png" />
       </div>
-      <div class="q-mt-md text-center"></div>
+       <div class="q-mt-md text-center">
+          <span class="title-promo">{{ $t("news.promo1.title") }}</span>
+          <p>{{ $t("news.promo1.description") }}</p>
+        <span class="title-romo">{{getDatePromo()}}</span>
+      </div>
     </q-carousel-slide>
     <q-carousel-slide name="promo2" class="column no-wrap flex-center">
       <div class="carousel-slide-image">
         <img src="./../../assets/images/Promo_2.png" />
       </div>
-      <div class="q-mt-md text-center"></div>
+       <div class="q-mt-md text-center">
+        <span class="title-promo">{{ $t("news.promo2.title") }}</span>
+        <p>{{ $t("news.promo2.description") }}</p>
+        <span class="title-romo">{{getDatePromo()}}</span>
+      </div>
     </q-carousel-slide>
     <q-carousel-slide name="promo3" class="column no-wrap flex-center">
       <div class="carousel-slide-image">
         <img src="./../../assets/images/Promo_3.png" />
       </div>
       <div class="q-mt-md text-center">
-        <span class="title-promo">OFERTA ESPECIAL PARA FIN DE AÑO</span>
-        <p>Le ofrecemos esta Oferta por Fin de año para que su familia disfrute de las festividades.
-        <br>Envie dinero a Cuba sin costo extra ni comisiones. Por cada 100 USD entregamos en efectivo 6400 MN,
-        <br>y por 130 USD ponemos 100 MLC en tarjeta. Llamenos al 1(786) 203 7678.</p>
+        <span class="title-promo">{{ $t("news.promo3.title") }}</span>
+        <p>{{ $t("news.promo3.description") }}</p>
         <span class="title-romo">{{getDatePromo()}}</span>
       </div>
     </q-carousel-slide>
@@ -62,6 +68,7 @@ export default {
 <style scoped>
 .bg-page {
   background-color: transparent !important;
+  max-width: 600px;
 }
 .carousel-slide-image {
   width: 250px;
