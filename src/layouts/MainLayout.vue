@@ -13,6 +13,7 @@ import HeaderComponent from "../components/layout/HeaderComponent.vue";
 import FooterComponent from "../components/layout/FooterComponent.vue";
 import { defineComponent } from "vue";
 
+
 export default defineComponent({
   name: "MainLayout",
   components: {
