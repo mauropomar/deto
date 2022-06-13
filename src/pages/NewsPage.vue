@@ -34,4 +34,10 @@ img {
   width: 100%;
   object-fit: contain;
 }
+
+.section-rt {
+  position: relative;
+  text-align: center;
+  z-index: 9;
+}
 </style>
