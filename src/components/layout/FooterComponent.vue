@@ -25,7 +25,7 @@
           <q-tooltip class="bg-primary"> +1(786) 203 7678 </q-tooltip>
         </q-btn>
         <q-separator vertical="false" color="accent" />
-        <div class="q-mr-sm">Deto</div>
+        <q-icon class="q-mr-sm" size="40px"><img :src="resolveImgMenu()"/></q-icon>
         <div class="q-mr-sm" style="font-size: 10px">
           {{ getFullYear() }} @ {{ $t("footer.copyright") }}
         </div>
@@ -51,7 +51,15 @@ export default defineComponent({
     },
     callNumber(){
        window.open('tel:1(786) 203 7678');
-    }
+    },
+    resolveImgMenu() {
+      let images = require.context(
+        "./../../assets/images/",
+        false,
+        /\.png$|\.jpg$/
+      );
+      return images("./" + this.iconDetoFooter);
+    },
   },
   computed: {
     visibleOptionBack: {
@@ -61,6 +69,26 @@ export default defineComponent({
       set(value) {
         this.setVisibleOptionBack({ visible: value });
       },
+    },
+    iconDetoFooter: {
+      get() {
+        return this.$store.state.toolbar.iconDetoFooter;
+      },
+      setIconMenu(value) {
+        this.setIconDetoFooter({ value: value });
+      },
+    },
+  },
+  mounted() {
+    let themeLocale = localStorage.getItem("theme");
+    if (themeLocale === null || themeLocale === "blue") {
+      this.$store.dispatch("toolbar/setIconMenuHeader", {
+        value: "logo_deto_footer_white.png",
+      });
+    } else {
+      this.$store.dispatch("toolbar/setIconDetoFooter", {
+        value: "logo_deto_footer_black.png",
+      });
     }
   },
 });

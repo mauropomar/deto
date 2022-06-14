@@ -90,7 +90,7 @@ export default defineComponent({
   name: "MenuPage",
   data() {
     return {
-     iconTheme: 'wb_sunny',
+      iconTheme: "wb_sunny",
     };
   },
   methods: {
@@ -110,14 +110,25 @@ export default defineComponent({
           ? "blue-dark"
           : "blue";
       document.body.setAttribute("data-theme", themeLocale);
-      localStorage.setItem('theme', themeLocale);
-      this.iconTheme = themeLocale === 'blue' ?  "brightness_2" : "wb_sunny";
+      localStorage.setItem("theme", themeLocale);
+      this.iconTheme = themeLocale === "blue" ? "brightness_2" : "wb_sunny";
+      const iconMenu = themeLocale === "blue" ? "logo_header_white.png" : "logo_header_black.png";
+      const iconDetoFooter = themeLocale === "blue" ? "logo_deto_footer_white.png": "logo_deto_footer_black.png";
+      this.$store.dispatch("toolbar/setIconMenuHeader", {
+          value: iconMenu,
+        });
+      this.$store.dispatch("toolbar/setIconDetoFooter", {
+        value: iconDetoFooter,
+      });
     },
   },
   mounted() {
     this.$store.dispatch("toolbar/setVisibleOptionHeader", { visible: false });
-     let themeLocale = localStorage.getItem('theme');
-    this.iconTheme = (themeLocale === null) || (themeLocale === "blue")? "brightness_2" : "wb_sunny";
+    let themeLocale = localStorage.getItem("theme");
+    this.iconTheme =
+      themeLocale === null || themeLocale === "blue"
+        ? "brightness_2"
+        : "wb_sunny";
   },
 });
 </script>
@@ -129,7 +140,7 @@ export default defineComponent({
 #card-content > div {
   margin-bottom: 10px;
 }
-.bg-backgroud{
-  background: linear-gradient(90deg, #008DD2 0%, #0956A8 100%)
+.bg-backgroud {
+  background: linear-gradient(90deg, #008dd2 0%, #0956a8 100%);
 }
 </style>

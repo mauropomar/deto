@@ -22,10 +22,6 @@ export default defineComponent({
   },
   mounted() {
     let themeLocale = localStorage.getItem("theme");
-    this.iconTheme =
-      themeLocale === null || themeLocale === "blue"
-        ? "brightness_2"
-        : "wb_sunny";
     themeLocale =
       (themeLocale === null) | (themeLocale === "blue") ? "blue" : "blue-dark";
     document.body.setAttribute("data-theme", themeLocale);

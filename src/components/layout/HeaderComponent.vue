@@ -2,14 +2,9 @@
   <q-header elevated class="bg-primary text-white">
     <q-toolbar>
       <q-toolbar-title>
-        <q-btn
-          @click="goToPage('menu')"
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-        />
+        <q-btn @click="goToPage('menu')" flat dense round aria-label="Menu"
+          ><q-icon><img :src="resolveImgMenu()" /></q-icon
+        ></q-btn>
       </q-toolbar-title>
       <q-btn
         v-if="visibleOptionHeader"
@@ -113,7 +108,8 @@ export default defineComponent({
   name: "HeaderComponent",
   data() {
     return {
-     iconTheme: 'wb_sunny',
+      iconMenu: "logo_header_white.png",
+      iconTheme: "wb_sunny",
     };
   },
   methods: {
@@ -132,10 +128,30 @@ export default defineComponent({
         themeLocale === null || themeLocale === "blue" ? "blue-dark" : "blue";
       document.body.setAttribute("data-theme", themeLocale);
       this.iconTheme = themeLocale === "blue" ? "brightness_2" : "wb_sunny";
+      const iconMenu =
+        themeLocale === "blue"
+          ? "logo_header_white.png"
+          : "logo_header_black.png";
+      const iconDetoFooter =
+        themeLocale === "blue"
+          ? "logo_deto_footer_white.png"
+          : "logo_deto_footer_black.png";
+      this.$store.dispatch("toolbar/setIconMenuHeader", { value: iconMenu });
+      this.$store.dispatch("toolbar/setIconDetoFooter", {
+        value: iconDetoFooter,
+      });
       localStorage.setItem("theme", themeLocale);
     },
     changeLanguage() {
       this.$i18n.locale = this.$i18n.locale === "es" ? "en-US" : "es";
+    },
+    resolveImgMenu() {
+      let images = require.context(
+        "./../../assets/images/",
+        false,
+        /\.png$|\.jpg$/
+      );
+      return images("./" + this.iconMenuHeader);
     },
   },
   computed: {
@@ -146,6 +162,28 @@ export default defineComponent({
       set(value) {
         this.setVisibleOptionHeader({ visible: value });
       },
+    },
+    iconMenuHeader: {
+      get() {
+        return this.$store.state.toolbar.iconMenuHeader;
+      },
+      setIconMenu(value) {
+        this.setIconMenuHeader({ value: value });
+      },
+    },
+  },
+  mounted() {
+    let themeLocale = localStorage.getItem("theme");
+    if (themeLocale === null || themeLocale === "blue") {
+      this.iconTheme = "brightness_2";
+      this.$store.dispatch("toolbar/setIconMenuHeader", {
+        value: "logo_header_white.png",
+      });
+    } else {
+      this.iconTheme = "wb_sunny";
+      this.$store.dispatch("toolbar/setIconMenuHeader", {
+        value: "logo_header_black.png",
+      });
     }
   },
 });
