@@ -12,7 +12,7 @@
       arrows
       height="80vh"
       class="bg-page text-white shadow-1 rounded-borders"
-      @click="selectSlide()"
+
     >
       <q-carousel-slide
         :name="item.name"
@@ -26,6 +26,7 @@
           :title="item.title"
           :description="item.description"
           :showButtons="showButtonsShareLike"
+          @clickImage="showButtonsShareLike = true"
         >
         </app-slide-carousel>
       </q-carousel-slide>
@@ -73,15 +74,17 @@ export default {
     };
   },
   methods: {
-    selectSlide(){
-       this.showButtonsShareLike = true
-    },
     getDatePromo() {
       const date = new Date();
       const options = { year: "numeric", month: "long", day: "numeric" };
       return date.toLocaleDateString(this.$i18n.locale, options);
     },
   },
+  watch: {
+      slide: function(val) {
+         this.showButtonsShareLike = false;
+      }
+  }
 };
 </script>
 
