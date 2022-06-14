@@ -96,16 +96,16 @@ export default {
       }
     },
     promo1: {
-      title: "EXQUISITOS COMBOS PARA LA FAMILIA",
-      description: "En nuestro sitio web tienda.detoo.com usted puede comprar excelentes productos y combos para Cuba. La entrega es inmediata y nos caracteriza el compromiso con nuestros clientes. Nuestra aplicación móvil le permitirá tenernos siempre cerca!. Llamenos al +1(786) 203 7678.",
+      title: "OFERTA ESPECIAL PARA FIN DE AÑO",
+      description: "Le ofrecemos esta Oferta por Fin de año para que su familia disfrute de las festividades. Envie dinero a Cuba sin costo extra ni comisiones. Por cada 100 USD entregamos en efectivo 6400 MN, y por 130 USD ponemos 100 MLC en tarjeta. Llamenos al +1(786) 203 7678.",
     },
     promo2: {
       title: "SIGUE CONECTADO AL FUTURO",
       description: "Visite nuestro sitio web recargas.detoo.com y seleccione el plan que más le guste para seguir conectado. Nuestras ofertas cuentas con excelentes precios para distintos presupuestos y contienen bonos y llamadas, mensajes datos móviles, etc. Llamenos al +1(786) 203 7678.",
     },
     promo3: {
-      title: "OFERTA ESPECIAL PARA FIN DE AÑO",
-      description: "Le ofrecemos esta Oferta por Fin de año para que su familia disfrute de las festividades. Envie dinero a Cuba sin costo extra ni comisiones. Por cada 100 USD entregamos en efectivo 6400 MN, y por 130 USD ponemos 100 MLC en tarjeta. Llamenos al +1(786) 203 7678.",
+      title: "EXQUISITOS COMBOS PARA LA FAMILIA",
+      description: "En nuestro sitio web tienda.detoo.com usted puede comprar excelentes productos y combos para Cuba. La entrega es inmediata y nos caracteriza el compromiso con nuestros clientes. Nuestra aplicación móvil le permitirá tenernos siempre cerca!. Llamenos al +1(786) 203 7678.",
     },
   },
 };
