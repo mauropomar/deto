@@ -87,6 +87,14 @@ export default {
     },
   },
   news: {
+    buttons:{
+      like:{
+        text:'Me gusta'
+      },
+      share:{
+        text:'Compartir'
+      }
+    },
     promo1: {
       title: "EXQUISITOS COMBOS PARA LA FAMILIA",
       description: "En nuestro sitio web tienda.detoo.com usted puede comprar excelentes productos y combos para Cuba. La entrega es inmediata y nos caracteriza el compromiso con nuestros clientes. Nuestra aplicación móvil le permitirá tenernos siempre cerca!. Llamenos al +1(786) 203 7678.",
