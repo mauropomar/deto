@@ -12,18 +12,21 @@
       arrows
       height="80vh"
       class="bg-page text-white shadow-1 rounded-borders"
+      @click="selectSlide()"
     >
       <q-carousel-slide
         :name="item.name"
         class="column no-wrap flex-center"
         v-for="item in sliders"
         :key="item.name"
+        @click="canPlay()"
       >
         <app-slide-carousel
           :slide="item.name"
           :filename="item.src"
           :title="item.title"
           :description="item.description"
+          :showButtons="showButtonsShareLike"
         >
         </app-slide-carousel>
       </q-carousel-slide>
@@ -47,6 +50,7 @@ export default {
   },
   data() {
     return {
+      showButtonsShareLike:false,
       sliders: [
         {
           name: "promo1",
@@ -70,6 +74,9 @@ export default {
     };
   },
   methods: {
+    selectSlide(){
+       this.showButtonsShareLike = true;
+    },
     getDatePromo() {
       const date = new Date();
       const options = { year: "numeric", month: "long", day: "numeric" };
