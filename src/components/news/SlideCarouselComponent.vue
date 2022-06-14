@@ -7,12 +7,12 @@
     <p>{{ $t(description) }}</p>
     <span class="title-romo">{{ getDatePromo() }}</span>
   </div>
-  <q-btn class="btn-like" flat round dense icon="thumb_up_alt">
+  <q-btn class="btn-like" flat round dense icon="thumb_up_alt" v-if="showButtons">
     <q-tooltip class="bg-primary">
       {{ $t("news.buttons.like.text") }}
     </q-tooltip>
   </q-btn>
-  <q-btn class="btn-share" flat round dense icon="share">
+  <q-btn class="btn-share" flat round dense icon="share" v-if="showButtons">
     <q-tooltip class="bg-primary">
       {{ $t("news.buttons.share.text") }}
     </q-tooltip>
@@ -24,7 +24,7 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "SlideCarouselComponent",
-  props: ["title", "description", "filename"],
+  props: ["title", "description", "filename", "showButtons"],
   methods: {
     getDatePromo() {
       const date = new Date();

@@ -19,7 +19,6 @@
         class="column no-wrap flex-center"
         v-for="item in sliders"
         :key="item.name"
-        @click="canPlay()"
       >
         <app-slide-carousel
           :slide="item.name"
@@ -56,26 +55,26 @@ export default {
           name: "promo1",
           title: "news.promo1.title",
           description: "news.promo1.description",
-          src: "Promo_1.png",
+          src: "Promo_1.jpg",
         },
         {
           name: "promo2",
           title: "news.promo2.title",
           description: "news.promo2.description",
-          src: "Promo_2.png",
+          src: "Promo_2.jpg",
         },
         {
           name: "promo3",
           title: "news.promo3.title",
           description: "news.promo3.description",
-          src: "Promo_3.png",
+          src: "Promo_3.jpg",
         },
       ],
     };
   },
   methods: {
     selectSlide(){
-       this.showButtonsShareLike = true;
+       this.showButtonsShareLike = true
     },
     getDatePromo() {
       const date = new Date();
