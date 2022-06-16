@@ -1,7 +1,7 @@
 const state = {
   visibleOptionHeader: true,
   visibleOptionBack: false,
-  iconMenuHeader: 'logo_header_white.png',
+  iconMenuHeader:'logo_header_white.png',
   iconDetoFooter:'logo_deto_footer_white.png'
 }
 

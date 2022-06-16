@@ -108,7 +108,6 @@ export default defineComponent({
   name: "HeaderComponent",
   data() {
     return {
-      iconMenu: "logo_header_white.png",
       iconTheme: "wb_sunny",
     };
   },

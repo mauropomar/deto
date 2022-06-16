@@ -82,7 +82,7 @@ export default defineComponent({
   mounted() {
     let themeLocale = localStorage.getItem("theme");
     if (themeLocale === null || themeLocale === "blue") {
-      this.$store.dispatch("toolbar/setIconMenuHeader", {
+      this.$store.dispatch("toolbar/setIconDetoFooter", {
         value: "logo_deto_footer_white.png",
       });
     } else {
