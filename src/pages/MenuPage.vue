@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center bg-backgroud">
-    <div id="card-content" class="row">
+    <div id="card-content" class="row animate__animated animate__bounceInDown" :class="classAnimation">
       <div class="col-12">
         <q-btn
           @click="goToPage('advertisements')"
@@ -84,13 +84,15 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
+import { defineComponent } from "vue"
+import "animate.css"
 
 export default defineComponent({
   name: "MenuPage",
   data() {
     return {
       iconTheme: "wb_sunny",
+      animateContainer: true
     };
   },
   methods: {
@@ -112,14 +114,31 @@ export default defineComponent({
       document.body.setAttribute("data-theme", themeLocale);
       localStorage.setItem("theme", themeLocale);
       this.iconTheme = themeLocale === "blue" ? "brightness_2" : "wb_sunny";
-      const iconMenu = themeLocale === "blue" ? "logo_header_white.png" : "logo_header_black.png";
-      const iconDetoFooter = themeLocale === "blue" ? "logo_deto_footer_white.png": "logo_deto_footer_black.png";
+      const iconMenu =
+        themeLocale === "blue"
+          ? "logo_header_white.png"
+          : "logo_header_black.png";
+      const iconDetoFooter =
+        themeLocale === "blue"
+          ? "logo_deto_footer_white.png"
+          : "logo_deto_footer_black.png";
       this.$store.dispatch("toolbar/setIconMenuHeader", {
-          value: iconMenu,
-        });
+        value: iconMenu,
+      });
       this.$store.dispatch("toolbar/setIconDetoFooter", {
         value: iconDetoFooter,
       });
+    },
+  },
+  computed: {
+    classAnimation() {
+      let result;
+      if (this.animateContainer) {
+        result = "animate__bounceInDown";
+      } else {
+        result = "animate__bounceOutUp";
+      }
+      return result;
     },
   },
   mounted() {
@@ -129,7 +148,7 @@ export default defineComponent({
       themeLocale === null || themeLocale === "blue"
         ? "brightness_2"
         : "wb_sunny";
-  },
+  }
 });
 </script>
 

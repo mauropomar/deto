@@ -1,6 +1,6 @@
 <template>
   <q-page class="bg-page">
-    <div id="section" class="row">
+    <div id="section" class="row animate__animated animate__bounceInRight">
       <div class="col-12 col-sm-5 flex flex-center">
         <div class="row q-pa-md">
           <div class="col-12 text-center section-title">
@@ -30,7 +30,8 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
+import { defineComponent } from "vue"
+import "animate.css"
 
 export default defineComponent({
   name: "IndexPage",

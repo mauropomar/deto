@@ -1,6 +1,6 @@
 <template>
   <q-page class="q-pa-sm bg-page">
-    <div id="section" class="flex flex-center">
+    <div id="section" class="flex flex-center animate__animated animate__bounceInRight">
       <app-carousel-news></app-carousel-news>
     </div>
   </q-page>
@@ -9,6 +9,7 @@
 <script>
 import CarouselNewsComponent from "components/news/CarouselNewsComponent";
 import { defineComponent } from "vue";
+import "animate.css";
 
 export default defineComponent({
   name: "NewsPage",
