@@ -2,7 +2,7 @@
   <q-header elevated class="bg-primary text-white">
     <q-toolbar>
       <q-toolbar-title>
-        <q-btn @click="goToPage('menu')" flat dense round aria-label="Menu"
+        <q-btn @click="clickToMenu()" flat dense round aria-label="Menu"
           ><q-icon><img :src="getImgMenu()" /></q-icon
         ></q-btn>
       </q-toolbar-title>
@@ -112,6 +112,17 @@ export default defineComponent({
     };
   },
   methods: {
+    clickToMenu() {
+      const routePath = this.$route.path;
+      if (routePath.indexOf("menu") === -1) {
+        this.$router.push("menu");
+        this.$store.dispatch("toolbar/setVisibleOptionBack", {
+          visible: false,
+        });
+      }else{
+        this.goToHome();
+      }
+    },
     goToHome() {
       this.$router.push("/");
       this.$store.dispatch("toolbar/setVisibleOptionHeader", { visible: true });
@@ -135,15 +146,14 @@ export default defineComponent({
         themeLocale === "blue"
           ? "logo_deto_footer_white.png"
           : "logo_deto_footer_black.png";
-      const imageDetoIndexPage = themeLocale === "blue"
-          ? "deto_white.png"
-          : "deto_black.png";
+      const imageDetoIndexPage =
+        themeLocale === "blue" ? "deto_white.png" : "deto_black.png";
       this.$store.dispatch("toolbar/setIconMenuHeader", { value: iconMenu });
       this.$store.dispatch("toolbar/setIconDetoFooter", {
         value: iconDetoFooter,
       });
       this.$store.dispatch("toolbar/setImageDetoIndexPage", {
-        value: imageDetoIndexPage
+        value: imageDetoIndexPage,
       });
       localStorage.setItem("theme", themeLocale);
     },
