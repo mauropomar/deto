@@ -3,7 +3,7 @@
     <q-toolbar>
       <q-toolbar-title>
         <q-btn @click="clickToMenu()" flat dense round aria-label="Menu"
-          ><q-icon><img :src="getImgMenu()" /></q-icon
+          ><q-icon><img :src="getImgMenu()"/></q-icon
         ></q-btn>
       </q-toolbar-title>
       <q-btn
@@ -203,4 +203,3 @@ export default defineComponent({
   },
 });
 </script>
-

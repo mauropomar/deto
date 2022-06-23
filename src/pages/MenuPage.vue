@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center bg-backgroud">
-    <div id="card-content" class="row animate__animated animate__bounceInDown" :class="classAnimation">
+    <div id="card-content" class="row animate__animated animate__bounceInDown">
       <div class="col-12">
         <q-btn
           @click="goToPage('advertisements')"
@@ -91,8 +91,7 @@ export default defineComponent({
   name: "MenuPage",
   data() {
     return {
-      iconTheme: "wb_sunny",
-      animateContainer: true
+      iconTheme: "wb_sunny"
     };
   },
   methods: {
@@ -128,17 +127,6 @@ export default defineComponent({
       this.$store.dispatch("toolbar/setIconDetoFooter", {
         value: iconDetoFooter,
       });
-    },
-  },
-  computed: {
-    classAnimation() {
-      let result;
-      if (this.animateContainer) {
-        result = "animate__bounceInDown";
-      } else {
-        result = "animate__bounceOutUp";
-      }
-      return result;
     },
   },
   mounted() {

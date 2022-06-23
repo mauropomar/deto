@@ -30,11 +30,9 @@ export default defineComponent({
 </script>
 
 <style>
- .bg-backgroud{
+ .q-layout{
    overflow-x: hidden;
    overflow-y: hidden;
    background: linear-gradient(90deg, #008DD2 0%, #0956A8 100%)
 }
-
-
 </style>
