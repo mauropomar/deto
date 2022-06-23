@@ -3,7 +3,7 @@
     <q-toolbar>
       <q-toolbar-title>
         <q-btn @click="goToPage('menu')" flat dense round aria-label="Menu"
-          ><q-icon><img :src="resolveImgMenu()" /></q-icon
+          ><q-icon><img :src="getImgMenu()" /></q-icon
         ></q-btn>
       </q-toolbar-title>
       <q-btn
@@ -144,7 +144,7 @@ export default defineComponent({
     changeLanguage() {
       this.$i18n.locale = this.$i18n.locale === "es" ? "en-US" : "es";
     },
-    resolveImgMenu() {
+    getImgMenu() {
       let images = require.context(
         "./../../assets/images/",
         false,

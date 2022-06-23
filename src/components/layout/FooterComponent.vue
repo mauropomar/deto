@@ -25,7 +25,7 @@
           <q-tooltip class="bg-primary"> +1(786) 203 7678 </q-tooltip>
         </q-btn>
         <q-separator vertical="false" color="accent" />
-        <q-icon class="q-mr-sm" size="40px"><img :src="resolveImgMenu()"/></q-icon>
+        <q-icon class="q-mr-sm" size="40px"><img :src="getImgLogoDeto()"/></q-icon>
         <div class="q-mr-sm" style="font-size: 10px">
           {{ getFullYear() }} @ {{ $t("footer.copyright") }}
         </div>
@@ -52,7 +52,7 @@ export default defineComponent({
     callNumber(){
        window.open('tel:1(786) 203 7678');
     },
-    resolveImgMenu() {
+    getImgLogoDeto() {
       let images = require.context(
         "./../../assets/images/",
         false,
