@@ -1,6 +1,6 @@
 <template>
   <div class="carousel-slide-image">
-    <img :src="resolveImgUrl(filename)" @click="clickImage()"/>
+    <img :src="getImgUrl(filename)" @click="clickImage()"/>
   </div>
   <div class="q-mt-md text-center">
     <span class="title-promo">{{ $t(title) }}</span>
@@ -31,7 +31,7 @@ export default defineComponent({
       const options = { year: "numeric", month: "long", day: "numeric" };
       return date.toLocaleDateString(this.$i18n.locale, options);
     },
-    resolveImgUrl: function (path) {
+    getImgUrl: function (path) {
       let images = require.context(
         "./../../assets/images/",
         false,

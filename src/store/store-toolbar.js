@@ -2,7 +2,8 @@ const state = {
   visibleOptionHeader: true,
   visibleOptionBack: false,
   iconMenuHeader:'logo_header_white.png',
-  iconDetoFooter:'logo_deto_footer_white.png'
+  iconDetoFooter:'logo_deto_footer_white.png',
+  imageDetoIndexPage:'deto_white.png'
 }
 
 const mutations = {
@@ -17,6 +18,9 @@ const mutations = {
   },
   SET_ICON_DETO_FOOTER(state, { value }) {
     state.iconDetoFooter = value;
+  },
+  SET_IMAGE_DETO_INDEX_PAGE(state, { value }) {
+    state.imageDetoIndexPage = value;
   },
 }
 
@@ -33,6 +37,12 @@ const actions = {
   setIconDetoFooter({ commit }, { value }) {
     commit('SET_ICON_DETO_FOOTER', { value: value });
   },
+  setIconDetoFooter({ commit }, { value }) {
+    commit('SET_ICON_DETO_FOOTER', { value: value });
+  },
+  setImageDetoIndexPage({ commit }, { value }) {
+    commit('SET_IMAGE_DETO_INDEX_PAGE', { value: value });
+  },
 };
 
 const getters = {
@@ -47,7 +57,10 @@ const getters = {
   },
   iconDetoFooter:(state) => {
     return state.iconDetoFooter;
-  }
+  },
+  imageDetoIndexPage:(state) => {
+    return state.imageDetoIndexPage;
+  },
 }
 
 

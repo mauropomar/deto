@@ -48,13 +48,30 @@ export default defineComponent({
         false,
         /\.png$|\.jpg$/
       );
-      let themeLocale = document.body.getAttribute("data-theme");
-      const image =
-        themeLocale === null || themeLocale === "blue"
-          ? "deto_white.png"
-          : "deto_black.png";
-      return images("./" + image);
+      return images("./" + this.imageLogoDeto);
     },
+  },
+  computed: {
+    imageLogoDeto: {
+      get() {
+        return this.$store.state.toolbar.imageDetoIndexPage;
+      },
+      setLogoDetoIndexPage(value) {
+        this.setImageDetoIndexPage({ value: value });
+      },
+    },
+  },
+  mounted() {
+    let themeLocale = localStorage.getItem("theme");
+    if (themeLocale === null || themeLocale === "blue") {
+      this.$store.dispatch("toolbar/setImageDetoIndexPage", {
+        value: "deto_white.png",
+      });
+    } else {
+      this.$store.dispatch("toolbar/setImageDetoIndexPage", {
+        value: "deto_black.png",
+      });
+    }
   },
 });
 </script>

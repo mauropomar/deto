@@ -135,9 +135,15 @@ export default defineComponent({
         themeLocale === "blue"
           ? "logo_deto_footer_white.png"
           : "logo_deto_footer_black.png";
+      const imageDetoIndexPage = themeLocale === "blue"
+          ? "deto_white.png"
+          : "deto_black.png";
       this.$store.dispatch("toolbar/setIconMenuHeader", { value: iconMenu });
       this.$store.dispatch("toolbar/setIconDetoFooter", {
         value: iconDetoFooter,
+      });
+      this.$store.dispatch("toolbar/setImageDetoIndexPage", {
+        value: imageDetoIndexPage
       });
       localStorage.setItem("theme", themeLocale);
     },
