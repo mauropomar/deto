@@ -40,6 +40,7 @@ button .text {
 
 button:hover .text {
   max-width: 7rem;
+  font-size: 12px;
   transition-delay: 0.1s;
 }
 
