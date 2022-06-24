@@ -2,96 +2,98 @@
   <q-page class="flex flex-center bg-backgroud">
     <div id="card-content" class="row animate__animated animate__bounceInDown">
       <div class="col-12">
-        <q-btn
-          @click="goToPage('advertisements')"
-          flat
-          color="primary"
-          text-color="primary"
-          icon="ti-volume"
-          size="20px"
-          :label="$t('header.buttons.advertisement.text')"
-        />
+        <app-button-menu
+          :icon="iconAdvertiment.icon"
+          :text="iconAdvertiment.text"
+          @clickBtn="goToPage('advertisements')"
+        ></app-button-menu>
       </div>
       <div class="col-12">
-        <q-btn
-          @click="goToPage('rechages')"
-          flat
-          color="primary"
-          text-color="primary"
-          icon="mobile_friendly"
-          size="20px"
-          :label="$t('header.buttons.recharge.text')"
-        />
+        <app-button-menu
+          :icon="iconRecharges.icon"
+          :text="iconRecharges.text"
+          @clickBtn="goToPage('rechages')"
+        ></app-button-menu>
       </div>
       <div class="col-12">
-        <q-btn
-          @click="goToPage('combos')"
-          flat
-          color="primary"
-          text-color="primary"
-          icon="shopping_cart"
-          size="20px"
-          :label="$t('header.buttons.combo.text')"
-        />
+        <app-button-menu
+          :icon="iconShipment.icon"
+          :text="iconShipment.text"
+          @clickBtn="goToPage('shipments')"
+        ></app-button-menu>
       </div>
       <div class="col-12">
-        <q-btn
-          @click="goToPage('shipments')"
-          flat
-          color="primary"
-          text-color="primary"
-          icon="attach_money"
-          size="20px"
-          :label="$t('header.buttons.shipment.text')"
-        />
+        <app-button-menu
+          :icon="iconCombo.icon"
+          :text="iconCombo.text"
+          @clickBtn="goToPage('combos')"
+        ></app-button-menu>
       </div>
       <div class="col-12">
-        <q-btn
-          @click="goToPage('news')"
-          flat
-          color="primary"
-          text-color="primary"
-          icon="description"
-          size="20px"
-          :label="$t('header.buttons.news.text')"
-        />
+        <app-button-menu
+          :icon="iconNews.icon"
+          :text="iconNews.text"
+          @clickBtn="goToPage('news')"
+        ></app-button-menu>
       </div>
       <div class="col-12">
-        <q-btn
-          flat
-          color="primary"
-          text-color="primary"
-          :icon="iconTheme"
-          size="20px"
-          :label="$t('header.buttons.theme.text')"
-          @click="changeTheme()"
-        />
+        <app-button-menu
+          :icon="iconTheme.icon"
+          :text="iconTheme.text"
+          @clickBtn="changeTheme()"
+        ></app-button-menu>
       </div>
       <div class="col-12">
-        <q-btn
-          flat
-          color="primary"
-          text-color="primary"
-          icon="language"
-          size="20px"
-          :label="$t('header.buttons.language.text')"
-          style="width: 90%"
-          @click="changeLanguage()"
-        />
+        <app-button-menu
+          :icon="iconLanguage.icon"
+          :text="iconLanguage.text"
+          @clickBtn="changeLanguage()"
+        ></app-button-menu>
       </div>
     </div>
   </q-page>
 </template>
 
 <script>
-import { defineComponent } from "vue"
-import "animate.css"
+import { defineComponent } from "vue";
+import ButtonMenu from "./../components/menu/ButtonMenu.vue";
+import "animate.css";
 
 export default defineComponent({
   name: "MenuPage",
+  components: {
+    "app-button-menu": ButtonMenu,
+  },
   data() {
     return {
-      iconTheme: "wb_sunny"
+      iconAdvertiment: {
+        icon: "ti-volume",
+        text: "header.buttons.advertisement.text",
+      },
+      iconRecharges: {
+        icon: "mobile_friendly",
+        text: "header.buttons.recharge.text",
+      },
+      iconCombo: {
+        icon: "shopping_cart",
+        text: "header.buttons.combo.text",
+      },
+      iconShipment: {
+        icon: "attach_money",
+        text: "header.buttons.shipment.text",
+      },
+      iconTheme: {
+        icon: "wb_sunny",
+        text: "header.buttons.theme.text",
+      },
+      iconNews: {
+        icon: "description",
+        text: "header.buttons.news.text",
+      },
+      iconLanguage: {
+        icon: "language",
+        text: "header.buttons.language.text",
+      },
     };
   },
   methods: {
@@ -112,7 +114,7 @@ export default defineComponent({
           : "blue";
       document.body.setAttribute("data-theme", themeLocale);
       localStorage.setItem("theme", themeLocale);
-      this.iconTheme = themeLocale === "blue" ? "brightness_2" : "wb_sunny";
+      this.iconTheme.icon = themeLocale === "blue" ? "brightness_2" : "wb_sunny";
       const iconMenu =
         themeLocale === "blue"
           ? "logo_header_white.png"
@@ -132,11 +134,11 @@ export default defineComponent({
   mounted() {
     this.$store.dispatch("toolbar/setVisibleOptionHeader", { visible: false });
     let themeLocale = localStorage.getItem("theme");
-    this.iconTheme =
+    this.iconTheme.icon =
       themeLocale === null || themeLocale === "blue"
         ? "brightness_2"
         : "wb_sunny";
-  }
+  },
 });
 </script>
 
