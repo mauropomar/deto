@@ -2,29 +2,30 @@
   <q-footer elevated class="bg-primary text-white">
     <q-toolbar>
       <app-footer></app-footer>
-      <q-btn flat round dense v-if="!visibleOptionBack">
-        <q-icon name="ti-exchange-vertical" size="15px"></q-icon>
-        <q-tooltip class="bg-primary">
-          {{ $t("footer.buttons.displace.text") }}
-        </q-tooltip>
-      </q-btn>
-      <q-btn flat round dense v-if="visibleOptionBack" @click="goToPageBack()">
-        <q-icon name="ti-arrow-left" size="15px"></q-icon>
-        <q-tooltip class="bg-primary">
-          {{ $t("footer.buttons.back.text") }}
-        </q-tooltip>
-      </q-btn>
+      <app-button-footer
+         v-if="!visibleOptionBack"
+         :icon="iconDisplace.icon"
+         :text="iconDisplace.text"
+         :size="iconDisplace.size"
+         @clickBtn="displace()"
+         >
+      </app-button-footer>
+      <app-button-footer
+         v-if="visibleOptionBack"
+         :icon="iconBack.icon"
+         :text="iconBack.text"
+         :size="iconBack.size"
+          @clickBtn="goToPageBack()"
+         >
+      </app-button-footer>
       <q-space />
-      <q-btn
-        class="q-mr-lg"
-        flat
-        round
-        dense
-        icon="phone"
+      <app-button-footer
+         :icon="iconPhone.icon"
+         :text="iconPhone.text"
+         :size="iconPhone.size"
         @click="callNumber()"
-      >
-        <q-tooltip class="bg-primary"> +1(786) 203 7678 </q-tooltip>
-      </q-btn>
+         >
+      </app-button-footer>
       <q-separator vertical="false" color="accent" />
       <q-icon class="q-mr-sm" size="40px"
         ><img :src="getImgLogoDeto()"/></q-icon>
@@ -37,12 +38,38 @@
 
 <script>
 import { defineComponent } from "vue";
+import ButtonFooter from "./../footer/ButtonFooter.vue"
 
 export default defineComponent({
   name: "FooterComponent",
+  components:{
+     "app-button-footer": ButtonFooter,
+  },
+  data() {
+    return {
+      iconBack: {
+        icon: "ti-arrow-left",
+        text: "footer.buttons.back.text",
+        size:"12px"
+      },
+      iconDisplace: {
+        icon: "ti-exchange-vertical",
+        text: "footer.buttons.displace.text",
+        size:"12px"
+      },
+      iconPhone: {
+        icon: "phone",
+        text: "+1(786) 203 7678",
+        size:"20px"
+      },
+    }
+  },
   methods: {
     getFullYear() {
       return new Date().getFullYear();
+    },
+    displace(){
+
     },
     goToPageBack() {
       this.$router.go(-1);
