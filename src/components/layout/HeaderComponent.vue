@@ -3,86 +3,45 @@
     <q-toolbar>
       <q-toolbar-title>
         <q-btn @click="clickToMenu()" flat dense round aria-label="Menu"
-          ><q-icon><img :src="getImgMenu()"/></q-icon
+          ><q-icon><img :src="getImgMenu()" /></q-icon
         ></q-btn>
       </q-toolbar-title>
-      <q-btn
+      <app-button-header
         v-if="visibleOptionHeader"
-        @click="goToPage('advertisements')"
-        flat
-        round
-        dense
-        icon="ti-volume"
-        class="q-mr-xs"
-      >
-        <q-tooltip class="bg-primary">
-          {{ $t("header.buttons.advertisement.text") }}
-        </q-tooltip>
-      </q-btn>
-      <q-btn
+        :icon="iconAdvertiment.icon"
+        :text="iconAdvertiment.text"
+        @clickBtn="goToPage('advertisements')"
+      ></app-button-header>
+      <app-button-header
         v-if="visibleOptionHeader"
-        @click="goToPage('rechages')"
-        flat
-        round
-        dense
-        icon="mobile_friendly"
-        class="q-mr-xs"
-      >
-        <q-tooltip class="bg-primary">
-          {{ $t("header.buttons.recharge.text") }}
-        </q-tooltip>
-      </q-btn>
-      <q-btn
+        :icon="iconRecharges.icon"
+        :text="iconRecharges.text"
+        @clickBtn="goToPage('rechages')"
+      ></app-button-header>
+      <app-button-header
         v-if="visibleOptionHeader"
-        @click="goToPage('combos')"
-        flat
-        round
-        dense
-        icon="shopping_cart"
-        class="q-mr-xs"
-      >
-        <q-tooltip class="bg-primary">
-          {{ $t("header.buttons.combo.text") }}
-        </q-tooltip>
-      </q-btn>
-      <q-btn
+        :icon="iconCombo.icon"
+        :text="iconCombo.text"
+        @clickBtn="goToPage('combos')"
+      ></app-button-header>
+      <app-button-header
         v-if="visibleOptionHeader"
-        @click="goToPage('shipments')"
-        flat
-        round
-        dense
-        icon="attach_money"
-        class="q-mr-xs"
-      >
-        <q-tooltip class="bg-primary">
-          {{ $t("header.buttons.shipment.text") }}
-        </q-tooltip>
-      </q-btn>
-      <q-btn
+        :icon="iconShipment.icon"
+        :text="iconShipment.text"
+        @clickBtn="goToPage('shipments')"
+      ></app-button-header>
+      <app-button-header
         v-if="visibleOptionHeader"
-        @click="changeTheme()"
-        round
-        dense
-        :icon="iconTheme"
-        class="q-mr-xs"
-      >
-        <q-tooltip class="bg-primary">
-          {{ $t("header.buttons.theme.text") }}
-        </q-tooltip>
-      </q-btn>
-      <q-btn
+        :icon="iconTheme.icon"
+        :text="iconTheme.text"
+        @clickBtn="changeTheme()"
+      ></app-button-header>
+      <app-button-header
         v-if="visibleOptionHeader"
-        @click="changeLanguage()"
-        flat
-        round
-        dense
-        icon="language"
-        class="q-mr-xs"
-      >
-        <q-tooltip class="bg-primary">
-          {{ $t("header.buttons.language.text") }}
-        </q-tooltip>
-      </q-btn>
+        :icon="iconLanguage.icon"
+        :text="iconLanguage.text"
+        @clickBtn="changeLanguage()"
+      ></app-button-header>
       <q-btn
         v-if="!visibleOptionHeader"
         @click="goToHome()"
@@ -100,15 +59,41 @@
   </q-header>
 </template>
 
-
 <script>
 import { defineComponent } from "vue";
+import ButtonHeader from "./../header/ButtonHeader.vue";
 
 export default defineComponent({
   name: "HeaderComponent",
+  components: {
+    "app-button-header": ButtonHeader,
+  },
   data() {
     return {
-      iconTheme: "wb_sunny",
+      iconAdvertiment: {
+        icon: "ti-volume",
+        text: "header.buttons.advertisement.text",
+      },
+      iconRecharges: {
+        icon: "mobile_friendly",
+        text: "header.buttons.recharge.text",
+      },
+      iconCombo: {
+        icon: "shopping_cart",
+        text: "header.buttons.combo.text",
+      },
+       iconShipment: {
+        icon: "attach_money",
+        text: "header.buttons.shipment.text",
+      },
+      iconTheme: {
+        icon: "wb_sunny",
+        text: "header.buttons.theme.text",
+      },
+       iconLanguage: {
+        icon: "language",
+        text: "header.buttons.language.text",
+      },
     };
   },
   methods: {
@@ -119,7 +104,7 @@ export default defineComponent({
         this.$store.dispatch("toolbar/setVisibleOptionBack", {
           visible: false,
         });
-      }else{
+      } else {
         this.goToHome();
       }
     },
@@ -137,7 +122,7 @@ export default defineComponent({
       themeLocale =
         themeLocale === null || themeLocale === "blue" ? "blue-dark" : "blue";
       document.body.setAttribute("data-theme", themeLocale);
-      this.iconTheme = themeLocale === "blue" ? "brightness_2" : "wb_sunny";
+      this.iconTheme.icon = themeLocale === "blue" ? "brightness_2" : "wb_sunny";
       const iconMenu =
         themeLocale === "blue"
           ? "logo_header_white.png"
@@ -190,12 +175,12 @@ export default defineComponent({
   mounted() {
     let themeLocale = localStorage.getItem("theme");
     if (themeLocale === null || themeLocale === "blue") {
-      this.iconTheme = "brightness_2";
+      this.iconTheme.icon = "brightness_2";
       this.$store.dispatch("toolbar/setIconMenuHeader", {
         value: "logo_header_white.png",
       });
     } else {
-      this.iconTheme = "wb_sunny";
+      this.iconTheme.icon = "wb_sunny";
       this.$store.dispatch("toolbar/setIconMenuHeader", {
         value: "logo_header_black.png",
       });
