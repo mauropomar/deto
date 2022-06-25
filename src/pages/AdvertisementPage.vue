@@ -15,9 +15,9 @@
           <div class="col-12 text-center q-mt-md">
             <q-btn
               color="primary"
+              class="btn-visit-page"
               :label="$t('advertisement.buttons.visit.text')"
-              @click="visitPage()"
-            >
+              @click="visitPage()"            >
               <q-icon class="q-pl-sm" name="keyboard_arrow_right" size="10px" />
             </q-btn>
           </div>
@@ -62,8 +62,8 @@ export default defineComponent({
       },
     },
   },
-  created(){
-     this.$store.dispatch("animation/setAnimationIn", { value: true });
+  created() {
+    this.$store.dispatch("animation/setAnimationIn", { value: true });
   },
 });
 </script>

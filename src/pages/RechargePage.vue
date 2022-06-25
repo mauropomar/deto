@@ -1,6 +1,10 @@
 <template>
-   <q-page class="bg-page">
-    <div id="section" class="row animate__animated animate" :class="classAnimation">
+  <q-page class="bg-page">
+    <div
+      id="section"
+      class="row animate__animated animate"
+      :class="classAnimation"
+    >
       <div class="col-12 col-sm-5 flex flex-center">
         <div class="row q-pa-md">
           <div class="col-12 text-center section-title">
@@ -15,6 +19,7 @@
           <div class="col-12 text-center q-mt-md">
             <q-btn
               color="primary"
+              class="btn-visit-page"
               :label="$t('recharge.buttons.buy.text')"
               @click="visitPage()"
             >
@@ -33,15 +38,15 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
-import "animate.css"
+import { defineComponent } from "vue";
+import "animate.css";
 
 export default defineComponent({
-  name: 'RechargePage',
-  methods:{
-    visitPage(){
+  name: "RechargePage",
+  methods: {
+    visitPage() {
       window.open("https://recargas.detooo.com/");
-    }
+    },
   },
   computed: {
     classAnimation() {
@@ -56,17 +61,17 @@ export default defineComponent({
     animationIn: {
       get() {
         return this.$store.state.animation.animationIn;
-      }
+      },
     },
   },
-  created(){
-     this.$store.dispatch("animation/setAnimationIn", { value: true });
+  created() {
+    this.$store.dispatch("animation/setAnimationIn", { value: true });
   },
-})
+});
 </script>
 
 <style>
- .btn-visit {
+.btn-visit {
   position: absolute;
   bottom: 240px;
   left: 250px;
@@ -78,7 +83,7 @@ export default defineComponent({
   background-image: url("./../assets/images/Bg_1.png");
   height: 85vh;
 }
- .section-rt {
+.section-rt {
   height: 100%;
   z-index: 9;
 }

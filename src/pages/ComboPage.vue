@@ -15,6 +15,7 @@
           <div class="col-12 text-center q-mt-md">
             <q-btn
               color="primary"
+              class="btn-visit-page"
               :label="$t('combo.buttons.buy.text')"
               @click="visitPage()"
             >

@@ -15,6 +15,7 @@
             <q-btn
               @click="goToPage('news')"
               color="primary"
+              class="btn-visit-page"
               text-color="primary"
               icon="mobile_friendly"
               :label="$t('header.buttons.news.text')"
