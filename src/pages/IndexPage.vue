@@ -1,6 +1,6 @@
 <template>
   <q-page class="bg-page">
-    <div id="section" class="row animate__animated animate__bounceInRight">
+    <div id="section" class="row animate__animated animate" :class="classAnimation">
       <div class="col-12 col-sm-5 flex flex-center">
         <div class="row q-pa-md">
           <div class="col-12 text-center section-title">
@@ -60,6 +60,23 @@ export default defineComponent({
         this.setImageDetoIndexPage({ value: value });
       },
     },
+    classAnimation() {
+      let result;
+      if (this.animationIn) {
+        result = "animate__bounceInRight";
+      } else {
+        result = "animate__bounceOutRight";
+      }
+      return result;
+    },
+    animationIn: {
+      get() {
+        return this.$store.state.animation.animationIn;
+      }
+    },
+  },
+  created(){
+     this.$store.dispatch("animation/setAnimationIn", { value: true });
   },
   mounted() {
     let themeLocale = localStorage.getItem("theme");

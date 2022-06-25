@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center bg-backgroud">
-    <div id="card-content" class="row animate__animated animate__bounceInDown">
+    <div id="card-content" class="row animate__animated" :class="classAnimation">
       <div class="col-12">
         <app-button-menu
           :icon="iconAdvertiment.icon"
@@ -99,7 +99,10 @@ export default defineComponent({
   methods: {
     goToPage(route) {
       const routeLink = `/${route}`;
-      this.$router.push(routeLink);
+      this.$store.dispatch("animation/setAnimationIn", { value: false });
+      setTimeout(()=>{
+         this.$router.push(routeLink);
+      }, 1000);
       this.$store.dispatch("toolbar/setVisibleOptionHeader", { visible: true });
       this.$store.dispatch("toolbar/setVisibleOptionBack", { visible: true });
     },
@@ -130,6 +133,25 @@ export default defineComponent({
         value: iconDetoFooter,
       });
     },
+  },
+  computed: {
+    classAnimation() {
+      let result;
+      if (this.animationIn) {
+        result = "animate__bounceInDown";
+      } else {
+        result = "animate__bounceOutUp";
+      }
+      return result;
+    },
+    animationIn: {
+      get() {
+        return this.$store.state.animation.animationIn;
+      }
+    },
+  },
+  created(){
+     this.$store.dispatch("animation/setAnimationIn", { value: true });
   },
   mounted() {
     this.$store.dispatch("toolbar/setVisibleOptionHeader", { visible: false });

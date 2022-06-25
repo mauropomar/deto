@@ -3,6 +3,7 @@ import { createStore } from 'vuex'
 
 // import example from './module-example'
 import toolbar from './store-toolbar';
+import animation from './store-animation';
 
 /*
  * If not building with SSR mode, you can
@@ -16,7 +17,8 @@ import toolbar from './store-toolbar';
 export default store(function (/* { ssrContext } */) {
   const Store = createStore({
     modules: {
-      toolbar
+      toolbar,
+      animation
     },
 
     // enable strict mode (adds overhead!)

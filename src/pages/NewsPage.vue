@@ -1,6 +1,6 @@
 <template>
   <q-page class="q-pa-sm bg-page">
-    <div id="section" class="flex flex-center animate__animated animate__bounceInRight">
+    <div id="section" class="row flex flex-center animate__animated animate" :class="classAnimation">
       <app-carousel-news></app-carousel-news>
     </div>
   </q-page>
@@ -15,6 +15,25 @@ export default defineComponent({
   name: "NewsPage",
   components: {
     "app-carousel-news": CarouselNewsComponent,
+  },
+  computed: {
+    classAnimation() {
+      let result;
+      if (this.animationIn) {
+        result = "animate__bounceInRight";
+      } else {
+        result = "animate__bounceOutRight";
+      }
+      return result;
+    },
+    animationIn: {
+      get() {
+        return this.$store.state.animation.animationIn;
+      }
+    },
+  },
+  created(){
+     this.$store.dispatch("animation/setAnimationIn", { value: true });
   },
 });
 </script>

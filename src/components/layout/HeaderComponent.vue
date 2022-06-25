@@ -82,7 +82,7 @@ export default defineComponent({
         icon: "shopping_cart",
         text: "header.buttons.combo.text",
       },
-       iconShipment: {
+      iconShipment: {
         icon: "attach_money",
         text: "header.buttons.shipment.text",
       },
@@ -90,7 +90,7 @@ export default defineComponent({
         icon: "wb_sunny",
         text: "header.buttons.theme.text",
       },
-       iconLanguage: {
+      iconLanguage: {
         icon: "language",
         text: "header.buttons.language.text",
       },
@@ -100,7 +100,10 @@ export default defineComponent({
     clickToMenu() {
       const routePath = this.$route.path;
       if (routePath.indexOf("menu") === -1) {
-        this.$router.push("menu");
+        this.$store.dispatch("animation/setAnimationIn", { value: false });
+        setTimeout(() => {
+          this.$router.push("menu");
+        }, 1000);
         this.$store.dispatch("toolbar/setVisibleOptionBack", {
           visible: false,
         });
@@ -109,20 +112,31 @@ export default defineComponent({
       }
     },
     goToHome() {
-      this.$router.push("/");
+      this.$store.dispatch("animation/setAnimationIn", { value: false });
+      setTimeout(() => {
+        this.$router.push("/");
+      }, 1000);
       this.$store.dispatch("toolbar/setVisibleOptionHeader", { visible: true });
     },
     goToPage(route) {
       const routeLink = `/${route}`;
-      this.$router.push(routeLink);
-      this.$store.dispatch("toolbar/setVisibleOptionBack", { visible: false });
+      if (this.$route.path !== routeLink) {
+        this.$store.dispatch("animation/setAnimationIn", { value: false });
+        setTimeout(() => {
+          this.$router.push(routeLink);
+        }, 1000);
+        this.$store.dispatch("toolbar/setVisibleOptionBack", {
+          visible: false,
+        });
+      }
     },
     changeTheme() {
       let themeLocale = document.body.getAttribute("data-theme");
       themeLocale =
         themeLocale === null || themeLocale === "blue" ? "blue-dark" : "blue";
       document.body.setAttribute("data-theme", themeLocale);
-      this.iconTheme.icon = themeLocale === "blue" ? "brightness_2" : "wb_sunny";
+      this.iconTheme.icon =
+        themeLocale === "blue" ? "brightness_2" : "wb_sunny";
       const iconMenu =
         themeLocale === "blue"
           ? "logo_header_white.png"

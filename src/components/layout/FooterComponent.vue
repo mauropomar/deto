@@ -72,7 +72,10 @@ export default defineComponent({
 
     },
     goToPageBack() {
-      this.$router.go(-1);
+      this.$store.dispatch("animation/setAnimationIn", { value: false });
+      setTimeout(()=>{
+         this.$router.go(-1);
+      }, 1000);
       this.$store.dispatch("toolbar/setVisibleOptionHeader", {
         visible: false,
       });
