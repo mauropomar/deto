@@ -7,9 +7,6 @@
       >
       <q-icon left :name="icon" />
       <span class="text">{{ $t(text) }}</span>
-       <q-tooltip class="bg-primary">
-          {{ $t(text) }}
-        </q-tooltip>
     </q-btn>
   </div>
 </template>

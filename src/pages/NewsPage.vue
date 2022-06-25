@@ -1,6 +1,6 @@
 <template>
   <q-page class="q-pa-sm bg-page">
-    <div id="section" class="row flex flex-center animate__animated animate" :class="classAnimation">
+    <div id="section" class="row flex flex-center animate__animated" :class="classAnimation">
       <app-carousel-news></app-carousel-news>
     </div>
   </q-page>
