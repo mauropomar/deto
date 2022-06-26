@@ -2,12 +2,12 @@
   <div>
     <q-btn
       flat
-      color="primary"
-      text-color="primary"
       size="20px"
-      @click="clickButton()"
+      @click="clickButton(this.name)"
       @mouseover="hoverOver()"
       @mouseout="hoverOut()"
+      class="btn-menu"
+      :style="getStyle()"
     >
       <q-icon v-if="visible" left :name="icon" />
       <span class="text">{{ $t(text) }}</span>
@@ -20,24 +20,57 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "ButtonMenu",
-  props: ["icon", "text"],
+  props: ["icon", "text", "name"],
   data() {
     return {
-      visible:false
+      visible: true,
     };
   },
   methods: {
-    clickButton() {
-        this.$emit("clickBtn",true);
+    clickButton(name) {
+      this.$store.dispatch("button/setSelectName", { name: name });
+      this.$emit("clickBtn", true);
     },
-    hoverOver(){
+    hoverOver() {
       this.visible = true;
     },
-    hoverOut(){
+    hoverOut() {
       this.visible = false;
-    }
+    },
+    getStyle() {
+      const selectName = this.$store.state.button.selectButton;
+      if (selectName === this.name) {
+        this.visible = true;
+        let themeLocale = document.body.getAttribute("data-theme");
+        if (themeLocale === null || themeLocale === "blue") {
+          return {
+            "background-color": "#fff",
+            "color": "#0956a8 !important",
+            "border": "2px solid #0956a8",
+            "border-radius":"10px"
+          };
+        } else {
+          return {
+            "background-color": "black",
+            "color": "#0956a8 !important",
+            "border": "2px solid #0956a8",
+            "border-radius":"10px"
+          };
+        }
+      } else {
+        this.visible = false;
+        return "";
+      }
+    },
   },
+  computed: {
+    selectButton: {
+      get() {
+        return this.$store.state.button.selectButton;
+      },
+    },
+  }
 });
 </script>
 
-<style></style>
+<style scope></style>

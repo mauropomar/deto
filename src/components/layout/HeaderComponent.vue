@@ -112,6 +112,7 @@ export default defineComponent({
       }
     },
     goToHome() {
+      this.$store.dispatch("button/setSelectName", { name: "" });
       this.$store.dispatch("animation/setAnimationIn", { value: false });
       setTimeout(() => {
         this.$router.push("/");
