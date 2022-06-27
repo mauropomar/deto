@@ -78,7 +78,7 @@ export default defineComponent({
     return {
       iconAdvertiment: {
         icon: "ti-volume",
-        name: "advertisement",
+        name: "advertiment",
         text: "header.buttons.advertisement.text",
       },
       iconRecharges: {
