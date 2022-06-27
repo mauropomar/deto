@@ -10,36 +10,42 @@
         v-if="visibleOptionHeader"
         :icon="iconAdvertiment.icon"
         :text="iconAdvertiment.text"
+        :name="iconAdvertiment.name"
         @clickBtn="goToPage('advertisements')"
       ></app-button-header>
       <app-button-header
         v-if="visibleOptionHeader"
         :icon="iconRecharges.icon"
         :text="iconRecharges.text"
+         :name="iconRecharges.name"
         @clickBtn="goToPage('rechages')"
       ></app-button-header>
       <app-button-header
         v-if="visibleOptionHeader"
         :icon="iconCombo.icon"
         :text="iconCombo.text"
+        :name="iconCombo.name"
         @clickBtn="goToPage('combos')"
       ></app-button-header>
       <app-button-header
         v-if="visibleOptionHeader"
         :icon="iconShipment.icon"
         :text="iconShipment.text"
+        :name="iconShipment.name"
         @clickBtn="goToPage('shipments')"
       ></app-button-header>
       <app-button-header
         v-if="visibleOptionHeader"
         :icon="iconTheme.icon"
         :text="iconTheme.text"
+        :name="iconTheme.name"
         @clickBtn="changeTheme()"
       ></app-button-header>
       <app-button-header
         v-if="visibleOptionHeader"
         :icon="iconLanguage.icon"
         :text="iconLanguage.text"
+        :name="iconLanguage.name"
         @clickBtn="changeLanguage()"
       ></app-button-header>
       <q-btn
@@ -72,26 +78,32 @@ export default defineComponent({
     return {
       iconAdvertiment: {
         icon: "ti-volume",
+        name: "advertisement",
         text: "header.buttons.advertisement.text",
       },
       iconRecharges: {
         icon: "mobile_friendly",
+        name: "recharge",
         text: "header.buttons.recharge.text",
       },
       iconCombo: {
         icon: "shopping_cart",
+        name: "combo",
         text: "header.buttons.combo.text",
       },
       iconShipment: {
         icon: "attach_money",
+        name: "shipment",
         text: "header.buttons.shipment.text",
       },
       iconTheme: {
         icon: "wb_sunny",
+        name: "theme",
         text: "header.buttons.theme.text",
       },
       iconLanguage: {
         icon: "language",
+        name: "language",
         text: "header.buttons.language.text",
       },
     };
@@ -112,7 +124,7 @@ export default defineComponent({
       }
     },
     goToHome() {
-      this.$store.dispatch("button/setSelectName", { name: "" });
+      this.$store.dispatch("button/setSelectButtonMenuName", { name: "" });
       this.$store.dispatch("animation/setAnimationIn", { value: false });
       setTimeout(() => {
         this.$router.push("/");
