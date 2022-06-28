@@ -7,57 +7,57 @@
     >
       <div class="col-12">
         <app-button-menu
-          :icon="iconAdvertiment.icon"
-          :text="iconAdvertiment.text"
-          :name="iconAdvertiment.name"
+          :icon="advertiment.icon"
+          :text="advertiment.text"
+          :name="advertiment.name"
           @clickBtn="goToPage('advertisements')"
         ></app-button-menu>
       </div>
       <div class="col-12">
         <app-button-menu
-          :icon="iconRecharges.icon"
-          :text="iconRecharges.text"
-          :name="iconRecharges.name"
+          :icon="recharges.icon"
+          :text="recharges.text"
+          :name="recharges.name"
           @clickBtn="goToPage('rechages')"
         ></app-button-menu>
       </div>
       <div class="col-12">
         <app-button-menu
-          :icon="iconShipment.icon"
-          :text="iconShipment.text"
-          :name="iconShipment.name"
+          :icon="shipment.icon"
+          :text="shipment.text"
+          :name="shipment.name"
           @clickBtn="goToPage('shipments')"
         ></app-button-menu>
       </div>
       <div class="col-12">
         <app-button-menu
-          :icon="iconCombo.icon"
-          :text="iconCombo.text"
-          :name="iconCombo.name"
+          :icon="combo.icon"
+          :text="combo.text"
+          :name="combo.name"
           @clickBtn="goToPage('combos')"
         ></app-button-menu>
       </div>
       <div class="col-12">
         <app-button-menu
-          :icon="iconNews.icon"
-          :text="iconNews.text"
-          :name="iconNews.name"
+          :icon="news.icon"
+          :text="news.text"
+          :name="news.name"
           @clickBtn="goToPage('news')"
         ></app-button-menu>
       </div>
       <div class="col-12">
         <app-button-menu
-          :icon="iconTheme.icon"
-          :text="iconTheme.text"
-          :name="iconTheme.name"
+          :icon="theme.icon"
+          :text="theme.text"
+          :name="theme.name"
           @clickBtn="changeTheme()"
         ></app-button-menu>
       </div>
       <div class="col-12">
         <app-button-menu
-          :icon="iconLanguage.icon"
-          :text="iconLanguage.text"
-          :name="iconLanguage.name"
+          :icon="language.icon"
+          :text="language.text"
+          :name="language.name"
           @clickBtn="changeLanguage()"
         ></app-button-menu>
       </div>
@@ -77,37 +77,37 @@ export default defineComponent({
   },
   data() {
     return {
-      iconAdvertiment: {
+      advertiment: {
         icon: "ti-volume",
         name:"advertiment",
         text: "header.buttons.advertisement.text",
       },
-      iconRecharges: {
+      recharges: {
         icon: "mobile_friendly",
         name:"recharge",
         text: "header.buttons.recharge.text",
       },
-      iconCombo: {
+      combo: {
         icon: "shopping_cart",
         name:"combo",
         text: "header.buttons.combo.text",
       },
-      iconShipment: {
+      shipment: {
         icon: "attach_money",
         name:"shipment",
         text: "header.buttons.shipment.text",
       },
-      iconTheme: {
+      theme: {
         icon: "wb_sunny",
         name:"theme",
         text: "header.buttons.theme.text",
       },
-      iconNews: {
+      news: {
         icon: "description",
         name:"news",
         text: "header.buttons.news.text",
       },
-      iconLanguage: {
+      language: {
         icon: "language",
         name:"language",
         text: "header.buttons.language.text",
@@ -135,7 +135,7 @@ export default defineComponent({
           : "blue";
       document.body.setAttribute("data-theme", themeLocale);
       localStorage.setItem("theme", themeLocale);
-      this.iconTheme.icon =
+      this.theme.icon =
         themeLocale === "blue" ? "brightness_2" : "wb_sunny";
       const iconMenu =
         themeLocale === "blue"
@@ -175,7 +175,7 @@ export default defineComponent({
   mounted() {
     this.$store.dispatch("toolbar/setVisibleOptionHeader", { visible: false });
     let themeLocale = localStorage.getItem("theme");
-    this.iconTheme.icon =
+    this.theme.icon =
       themeLocale === null || themeLocale === "blue"
         ? "brightness_2"
         : "wb_sunny";

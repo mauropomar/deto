@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-btn flat dense class="q-mr-xs" @click="clickButton($event, this.name)">
+    <q-btn flat dense @click="clickButton($event, this.name)" :style="style">
       <q-icon left :name="icon" />
       <span class="text">{{ $t(text) }}</span>
     </q-btn>
@@ -12,21 +12,39 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "ButtonHeader",
-  props: ["icon", "text", "name"],
+  props: ["icon", "text", "name", "style"],
+  data() {
+    return {
+      visible: true,
+    };
+  },
   methods: {
     clickButton(event, btnName) {
-      if (btnName !== "theme" && btnName !== "language") {
-        const lastSelectButton = this.$store.state.button.selectButtonHeader;
-        if (lastSelectButton !== null) {
-          lastSelectButton.style.maxWidth = "";
+      const lastSelectName = this.selectButtonHeader
+        ? this.selectButtonHeader.id
+        : null;
+      if (
+        btnName !== "theme" &&
+        btnName !== "language" &&
+        lastSelectName !== btnName
+      ) {
+        if (this.selectButtonHeader !== null) {
+          this.selectButtonHeader.style.maxWidth = "";
         }
         event.target.style.maxWidth = "7rem";
+        event.target.id = btnName;
         this.$store.dispatch("button/setSelectButtonHeader", {
           comp: event.target,
         });
-        this.$store.dispatch("button/setSelectButtonMenuName", { name: btnName });
+        this.$store.dispatch("button/setSelectButtonMenuName", {
+          name: btnName,
+        });
+        this.$emit("setStyle", btnName);
+        if (this.selectButtonHeader !== null) {
+          this.$emit("removeStyle", lastSelectName);
+        }
       }
-      this.$emit("clickBtn", true);
+      this.$emit("clickBtn");
     },
   },
   computed: {
@@ -35,7 +53,39 @@ export default defineComponent({
         return this.$store.state.button.selectButtonHeader;
       },
     },
+    selectButtonMenuName: {
+      get() {
+        return this.$store.state.button.selectButtonMenuName;
+      },
+    },
   },
+  mounted() {
+    if (this.selectButtonMenuName === this.name) {
+      if (this.selectButtonHeader !== null) {
+        this.selectButtonHeader.style.maxWidth = "";
+        this.$el.style.maxWidth = "7rem";
+        this.$el.id = this.name;
+        this.$emit("removeStyle", this.selectButtonHeader.id);
+        this.$store.dispatch("button/setSelectButtonHeader", {
+          comp: this.$el,
+        });
+        this.$emit("setStyle", this.name);
+      } else {
+          this.$el.style.maxWidth = "7rem";
+          this.$el.id = this.name;
+          this.$store.dispatch("button/setSelectButtonHeader", {
+            comp: this.$el,
+          });
+          this.$emit("setStyle", this.name);
+        }
+      }
+      if(this.selectButtonMenuName === '' && this.selectButtonHeader !== null){
+        this.$emit("removeStyle", this.selectButtonHeader.id);
+        this.$store.dispatch("button/setSelectButtonHeader", {
+          comp: null,
+        });
+      }
+    }
 });
 </script>
 
