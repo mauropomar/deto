@@ -1,32 +1,32 @@
 const state = {
-  selectButtonMenuName: '',
-  selectButtonHeader: null
+  activeButtonMenuName: '',
+  activeButtonHeader: null
 }
 
 const mutations = {
-  SET_SELECT_BUTTON_MENU_NAME(state, { name }) {
-    state.selectButtonMenuName = name;
+  SET_ACTIVE_BUTTON_MENU_NAME(state, { name }) {
+    state.activeButtonMenuName = name;
   },
-  SET_SELECT_BUTTON_HEADER(state, { comp }) {
-    state.selectButtonHeader = comp;
+  SET_ACTIVE_BUTTON_HEADER(state, { comp }) {
+    state.activeButtonHeader = comp;
   }
 }
 
 const actions = {
-  setSelectButtonMenuName({ commit }, { name }) {
-    commit('SET_SELECT_BUTTON_MENU_NAME', { name: name });
+  setActiveButtonMenuName({ commit }, { name }) {
+    commit('SET_ACTIVE_BUTTON_MENU_NAME', { name: name });
   },
-  setSelectButtonHeader({ commit }, { comp }) {
-    commit('SET_SELECT_BUTTON_HEADER', { comp: comp });
+  setActiveButtonHeader({ commit }, { comp }) {
+    commit('SET_ACTIVE_BUTTON_HEADER', { comp: comp });
   },
 }
 
 const getters = {
-  selectButtonMenuName: (state) => {
-    return state.selectButtonMenuName;
+  activeButtonMenuName: (state) => {
+    return state.activeButtonMenuName;
   },
-  selectButtonHeader: (state) => {
-    return state.selectButtonHeader;
+  activeButtonHeader: (state) => {
+    return state.activeButtonHeader;
   }
 }
 

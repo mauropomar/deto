@@ -150,7 +150,7 @@
         }
       },
       goToHome() {
-        this.$store.dispatch("button/setSelectButtonMenuName", {name: ""});
+        this.$store.dispatch("button/setActiveButtonMenuName", {name: ""});
         this.$store.dispatch("animation/setAnimationIn", {value: false});
         setTimeout(() => {
           this.$router.push("/");
@@ -257,7 +257,7 @@
       applyThemeHeader(theme) {
         let items = ["advertiment", "recharge", "combo", "shipment"];
         const style1 = this.getStyleNotSelectButton(theme);
-        const activeBtnName = this.selectButtonHeader ?this.selectButtonHeader.id: null;
+        const activeBtnName = this.activeButtonHeader ?this.activeButtonHeader.id: null;
         items.forEach((value) => {
           if(value !== activeBtnName) {
             this[value].style = style1;
@@ -285,9 +285,9 @@
           this.setIconMenuHeader({value: value});
         },
       },
-      selectButtonHeader: {
+      activeButtonHeader: {
         get() {
-          return this.$store.state.button.selectButtonHeader
+          return this.$store.state.button.activeButtonHeader
         },
       }
     },

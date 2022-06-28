@@ -20,27 +20,27 @@ export default defineComponent({
   },
   methods: {
     clickButton(event, btnName) {
-      const lastSelectName = this.selectButtonHeader
-        ? this.selectButtonHeader.id
+      const lastSelectName = this.activeButtonHeader
+        ? this.activeButtonHeader.id
         : null;
       if (
         btnName !== "theme" &&
         btnName !== "language" &&
         lastSelectName !== btnName
       ) {
-        if (this.selectButtonHeader !== null) {
-          this.selectButtonHeader.style.maxWidth = "";
+        if (this.activeButtonHeader !== null) {
+          this.activeButtonHeader.style.maxWidth = "";
         }
         event.target.style.maxWidth = "7rem";
         event.target.id = btnName;
-        this.$store.dispatch("button/setSelectButtonHeader", {
+        this.$store.dispatch("button/setActiveButtonHeader", {
           comp: event.target,
         });
-        this.$store.dispatch("button/setSelectButtonMenuName", {
+        this.$store.dispatch("button/setActiveButtonMenuName", {
           name: btnName,
         });
         this.$emit("setStyle", btnName);
-        if (this.selectButtonHeader !== null) {
+        if (this.activeButtonHeader !== null) {
           this.$emit("removeStyle", lastSelectName);
         }
       }
@@ -48,44 +48,49 @@ export default defineComponent({
     },
   },
   computed: {
-    selectButtonHeader: {
+    activeButtonHeader: {
       get() {
-        return this.$store.state.button.selectButtonHeader;
+        return this.$store.state.button.activeButtonHeader;
       },
     },
-    selectButtonMenuName: {
+    activeButtonMenuName: {
       get() {
-        return this.$store.state.button.selectButtonMenuName;
+        return this.$store.state.button.activeButtonMenuName;
       },
     },
   },
   mounted() {
-    if (this.selectButtonMenuName === this.name) {
-      if (this.selectButtonHeader !== null) {
-        this.selectButtonHeader.style.maxWidth = "";
+    if (this.activeButtonMenuName === this.name) {
+      if (this.activeButtonHeader !== null) {
+        this.activeButtonHeader.style.maxWidth = "";
         this.$el.style.maxWidth = "7rem";
         this.$el.id = this.name;
-        this.$emit("removeStyle", this.selectButtonHeader.id);
-        this.$store.dispatch("button/setSelectButtonHeader", {
+        this.$emit("removeStyle", this.activeButtonHeader.id);
+        this.$store.dispatch("button/setActiveButtonHeader", {
           comp: this.$el,
         });
         this.$emit("setStyle", this.name);
       } else {
-          this.$el.style.maxWidth = "7rem";
-          this.$el.id = this.name;
-          this.$store.dispatch("button/setSelectButtonHeader", {
-            comp: this.$el,
-          });
-          this.$emit("setStyle", this.name);
-        }
+        this.$el.style.maxWidth = "7rem";
+        this.$el.id = this.name;
+        this.$store.dispatch("button/setActiveButtonHeader", {
+          comp: this.$el,
+        });
+        this.$emit("setStyle", this.name);
       }
-      if(this.selectButtonMenuName === '' && this.selectButtonHeader !== null){
-        this.$emit("removeStyle", this.selectButtonHeader.id);
-        this.$store.dispatch("button/setSelectButtonHeader", {
+    } else {
+      if (this.activeButtonMenuName === "" &&  this.activeButtonHeader !== null) {
+        this.$emit("removeStyle", this.activeButtonHeader.id);
+        this.$store.dispatch("button/setActiveButtonHeader", {
           comp: null,
         });
+      } else {
+        if (this.name !== "theme" && this.name !== "language") {
+          this.$emit("removeStyle", this.name);
+        }
       }
     }
+  },
 });
 </script>
 

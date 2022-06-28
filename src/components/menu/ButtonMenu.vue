@@ -28,7 +28,7 @@ export default defineComponent({
   },
   methods: {
     clickButton(name) {
-      this.$store.dispatch("button/setSelectButtonMenuName", { name: name });
+      this.$store.dispatch("button/setActiveButtonMenuName", { name: name });
       this.$emit("clickBtn", true);
     },
     hoverOver() {
@@ -38,8 +38,8 @@ export default defineComponent({
       this.visible = false;
     },
     getStyle() {
-      const selectName = this.selectButtonMenuName;
-      if (selectName === this.name) {
+      const activeBtnName = this.activeButtonMenuName;
+      if (activeBtnName === this.name) {
         this.visible = true;
         let themeLocale = document.body.getAttribute("data-theme");
         if (themeLocale === null || themeLocale === "blue") {
@@ -64,9 +64,9 @@ export default defineComponent({
     },
   },
   computed: {
-    selectButtonMenuName: {
+    activeButtonMenuName: {
       get() {
-        return this.$store.state.button.selectButtonMenuName;
+        return this.$store.state.button.activeButtonMenuName;
       },
     },
   }
