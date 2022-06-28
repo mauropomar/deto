@@ -206,7 +206,7 @@
         );
         return images("./" + this.iconMenuHeader);
       },
-      getStyleSelectButton(theme){
+      getStyleActiveButton(theme){
         let style = "";
         if (theme === null || theme === "blue") {
           style = {
@@ -225,7 +225,7 @@
         }
         return style;
       },
-      getStyleNotSelectButton(theme){
+      getStyleNotActiveButton(theme){
         let style = "";
         if (theme === null || theme === "blue") {
           style = {
@@ -244,25 +244,25 @@
       },
       setStyleButton(name) {
         let themeLocale = localStorage.getItem("theme");
-        const style = this.getStyleSelectButton(themeLocale);
+        const style = this.getStyleActiveButton(themeLocale);
         this[name].style = style;
       },
       removeStyleButton(name) {
         if(name !== null){
           let themeLocale = localStorage.getItem("theme");
-          const style = this.getStyleNotSelectButton(themeLocale);
+          const style = this.getStyleNotActiveButton(themeLocale);
           this[name].style = style;
         }
       },
       applyThemeHeader(theme) {
         let items = ["advertiment", "recharge", "combo", "shipment"];
-        const style1 = this.getStyleNotSelectButton(theme);
+        const style1 = this.getStyleNotActiveButton(theme);
         const activeBtnName = this.activeButtonHeader ?this.activeButtonHeader.id: null;
         items.forEach((value) => {
           if(value !== activeBtnName) {
             this[value].style = style1;
           }else{
-            let style2 = this.getStyleSelectButton(theme);
+            let style2 = this.getStyleActiveButton(theme);
             this[value].style = style2;
           }
         });
